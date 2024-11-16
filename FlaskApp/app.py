@@ -6,6 +6,22 @@ from flask_migrate import Migrate
 from werkzeug.security import generate_password_hash, check_password_hash
 import random
 
+from apscheduler.schedulers.background import BackgroundScheduler
+from data_collection import update_player_stock
+
+# Scheduler setup
+scheduler = BackgroundScheduler()
+
+# Example player IDs - replace these with your actual IDs
+player_ids = [1630173, 203500, 1628389]
+
+def scheduled_stock_update():
+    for player_id in player_ids:
+        update_player_stock(player_id)
+
+scheduler.add_job(scheduled_stock_update, 'interval', hours=1)  # Runs every hour
+scheduler.start()
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'  # Use your database URI
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -120,6 +136,16 @@ def temperature():
         "temperature": temperature
     }
     return jsonify(data)
+
+@app.route('/update_player_stocks')
+@login_required  # Optional if you want to restrict access
+def update_player_stocks():
+    player_ids = [1630173, 203500, 1628389]  # Example IDs
+    for player_id in player_ids:
+        update_player_stock(player_id)
+    flash('Player stocks updated successfully!', 'success')
+    return redirect(url_for('index'))
+
 
 if __name__ == "__main__":
     with app.app_context():
