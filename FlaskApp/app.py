@@ -65,6 +65,8 @@ def signup():
         new_user = User(username=username, email=email, password=hashed_password)
         db.session.add(new_user)
         db.session.commit()
+        
+        #testing
 
         flash('Account created successfully. Please log in.', 'success')
         return redirect(url_for('login'))
