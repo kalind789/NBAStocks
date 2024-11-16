@@ -22,10 +22,47 @@
         </div>
     </div>
 
-    <!-- Optional: Include Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <div class="container">
+        <h2 class="text-center">Top Performers</h2>
+
+        <!-- Chart Container -->
+        <div class="ct-chart ct-perfect-fourth mt-5"></div>
+    </div>
+
+    <!-- Include jQuery (full version) and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- Include Chartist JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chartist/dist/chartist.min.js"></script>
+
+    <script>
+        class MyCharts {
+            constructor(xData, yData) {
+                this.xData = xData;
+                this.yData = yData;
+            }
+
+            createGraph() {
+                const data = {
+                    labels: this.xData,
+                    series: [this.yData]
+                };
+                // No options needed here as per your request
+                new Chartist.Line('.ct-chart', data);
+            }
+        }
+
+        const XData = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+
+        // Fetch temperature data from the server
+        $.get('/temperature', function (resp) {
+            console.log("JSON DATA", resp.temperature);
+            const obj = new MyCharts(XData, resp.temperature);
+            obj.createGraph();
+        });
+    </script>
 </body>
 
 </html>

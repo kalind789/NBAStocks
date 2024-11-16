@@ -112,7 +112,6 @@ def profile():
     return render_template("profile.html")
 
 @app.route('/temperature', methods=["GET", "POST"])
-@login_required
 def temperature():
     temperature = []
     for i in range(1, 10):
