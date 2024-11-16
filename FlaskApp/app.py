@@ -66,7 +66,7 @@ def signup():
         db.session.add(new_user)
         db.session.commit()
         
-        #testing
+        #testing nvm
 
         flash('Account created successfully. Please log in.', 'success')
         return redirect(url_for('login'))
