@@ -5,21 +5,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nba Stock Exchange!</title>
+
+    <!-- Charlist-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        crossorigin="anonymous">
+
+    
 </head>
 
-<nav>
-    <a href="/">Home</a>
-    <a href="/">Login</a>
-    <a href="/">Market</a>
-    <!--<a href="/contact">Contact</a>-->
-
-</nav>
-
 <body>
-    <h1>Top preformers</h1>
+    <!-- Navigation -->
+    <nav>
+        <a href="/">Home</a>
+        <a href="/">Login</a>
+        <a href="/">Market</a>
+        <!-- <a href="/contact">Contact</a> -->
+    </nav>
+
+    <div class="jumbotron">
+        <h1 class="display-4"> hello </h1> 
+
+    </div>
+
+    <!-- Main Content -->
+    <h1>Top performers</h1>
     <p>This is a simple HTML page rendered by Flask.</p>
 
     <div class="ct-chart ct-perfect-fourth"></div>
+    <script>
+        var data = {
+                // A labels array that can contain any sort of values
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+                // Our series array that contains series objects or in this case series data arrays
+                series: [
+                    [5, 2, 4, 2, 0]
+                ]
+            };
+
+            // Create a new line chart object where as first parameter we pass in a selector
+            // that is resolving to our chart container element. The Second parameter
+            // is the actual data object.
+            new Chartist.Line('.ct-chart', data);
+    </script>
+
+    <!-- jQuery (choose one version) -->
+    <!-- Slim version (without AJAX and effects) -->
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" crossorigin="anonymous"></script> -->
+    <!-- Full version -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper.js (required for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        crossorigin="anonymous"></script>
+
+    <!-- Chartist JS -->
+    <script src="bower_components/chartist/dist/chartist.min.js"></script>
 </body>
 
 </html>
