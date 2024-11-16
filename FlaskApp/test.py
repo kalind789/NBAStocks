@@ -1,5 +1,4 @@
 # Test database 
-
 from app import app
 from models import db, User, PortfolioEntry, PlayerStock
 
