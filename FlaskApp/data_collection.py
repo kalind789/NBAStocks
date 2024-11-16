@@ -1,24 +1,40 @@
+# data_collection.py
+
+from nba_api.stats.endpoints import playercareerstats
 import random
-from nba_api.stats.endpoints import playercareerstats, boxscoretraditionalv2
-import pandas as pd
-from datetime import datetime
+from models import PlayerStock, db
 
-def get_player_stats(player_id):
-    """Fetches the player's career statistics using nba_api."""
-    career = playercareerstats.PlayerCareerStats(player_id=str(player_id))
-    return career.get_data_frames()[0]  # Returns DataFrame
-
-def get_game_stats(game_id):
-    """Fetches box score stats for a given game ID."""
-    boxscore = boxscoretraditionalv2.BoxScoreTraditionalV2(game_id=game_id)
-    return boxscore.get_data_frames()[0]  # Returns DataFrame
+def fetch_player_data(player_id):
+    """Fetch player data from the NBA API."""
+    try:
+        career = playercareerstats.PlayerCareerStats(player_id=str(player_id))
+        career_df = career.get_data_frames()[0]
+        if not career_df.empty:
+            latest_stats = career_df.iloc[-1]
+            return {
+                'PTS': latest_stats['PTS'],
+                'AST': latest_stats['AST'],
+                'REB': latest_stats['REB'],
+                'BLK': latest_stats['BLK'],
+                'STL': latest_stats['STL']
+            }
+        return None
+    except Exception as e:
+        print(f"Error fetching data for player {player_id}: {e}")
+        return None
 
 def calculate_fantasy_points(stats):
-    """Calculates fantasy points using custom formula."""
-    points = stats.get('PTS', 0)
-    assists = stats.get('AST', 0)
-    rebounds = stats.get('REB', 0)
-    blocks = stats.get('BLK', 0)
-    steals = stats.get('STL', 0)
-    fantasy_points = points + 3 * assists + 1.5 * rebounds + 5 * blocks + 5 * steals
-    return fantasy_points
+    """Calculate fantasy points using a custom formula."""
+    if stats is None:
+        return 0
+    return stats['PTS'] + 3 * stats['AST'] + 1.5 * stats['REB'] + 5 * stats['BLK'] + 5 * stats['STL']
+
+def update_player_stock(player_id):
+    """Fetches data and updates player stock in the database."""
+    stats = fetch_player_data(player_id)
+    if stats:
+        fantasy_points = calculate_fantasy_points(stats)
+        player_stock = PlayerStock.query.filter_by(id=player_id).first()
+        if player_stock:
+            player_stock.value = fantasy_points
+            db.session.commit()
