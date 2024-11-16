@@ -1,14 +1,19 @@
-from flask import Flask, render_template, redirect, url_for, request, flash
+from flask import Flask, render_template, redirect, url_for, request, flash, json, jsonify
+from flask_cors import CORS  # Import Flask-Cors
 from models import db, User  # Assuming models.py contains the User model with username, email, and password fields
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from flask_migrate import Migrate
 from werkzeug.security import generate_password_hash, check_password_hash
+import random
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'  # Use your database URI
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'your_secret_key'  # Replace with a strong key
 db.init_app(app)
+
+# Enable CORS
+CORS(app)  # This will allow CORS for all routes by default
 
 # Initialize Flask-Migrate
 migrate = Migrate(app, db)
@@ -35,13 +40,13 @@ def index():
 def signup():
     if request.method == 'POST':
         username = request.form.get('username')
-        email = request.form.get('email')
+        # email = request.form.get('email')
         password = request.form.get('password')
         confirm_password = request.form.get('confirm_password')
 
         # Basic validation
-        if not username or not password or not email:
-            flash('Username, email, and password are required.', 'danger')
+        if not username or not password:
+            flash('Username and password are required.', 'danger')
             return redirect(url_for('signup'))
 
         if password != confirm_password:
@@ -50,19 +55,19 @@ def signup():
 
         # Check if user already exists
         existing_user = User.query.filter_by(username=username).first()
-        existing_email = User.query.filter_by(email=email).first()
+        # existing_email = User.query.filter_by(email=email).first()
         if existing_user:
             flash('Username already exists. Please choose a different one.', 'danger')
             return redirect(url_for('signup'))
-        if existing_email:
-            flash('Email already registered. Please choose a different one.', 'danger')
-            return redirect(url_for('signup'))
+        # if existing_email:
+        #     flash('Email already registered. Please choose a different one.', 'danger')
+        #     return redirect(url_for('signup'))
 
         # Hash the password
         hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
 
         # Create a new user with the hashed password and email
-        new_user = User(username=username, email=email, password=hashed_password)
+        new_user = User(username=username, password=hashed_password)
         db.session.add(new_user)
         db.session.commit()
 
@@ -103,6 +108,17 @@ def view():
 @login_required
 def profile():
     return render_template("profile.html")
+
+@app.route('/temperature', methods=["GET", "POST"])
+@login_required
+def temperature():
+    temperature = []
+    for i in range(1, 10):
+        temperature.append(random.randint(0, 100))
+    data = {
+        "temperature": temperature
+    }
+    return jsonify(data)
 
 if __name__ == "__main__":
     with app.app_context():

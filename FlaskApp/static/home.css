@@ -1,12 +1,44 @@
-/* Specific styles for home page */
-.home-title {
-    font-size: 3rem;
-    color: #222;
-    margin-bottom: 15px;
+body {
+    background: url('../images/basketball-court.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    font-family: 'Arial', sans-serif;
 }
 
-.home-description {
-    font-size: 1.25rem;
-    color: #666;
-    margin-bottom: 25px;
+h1 {
+    font-family: 'Impact', sans-serif;
+    font-size: 3rem;
+    color: #FF4500; /* Basketball orange */
+    text-shadow: 2px 2px #000;
+}
+
+p {
+    font-size: 1.2rem;
+}
+
+.btn-primary {
+    background-color: #FF4500; /* Basketball orange */
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #E03C00;
+}
+
+.btn-secondary {
+    background-color: #1E1E1E;
+    color: #FF4500;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.btn-secondary:hover {
+    background-color: #333333;
+}
+
+.container {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2rem;
+    border-radius: 10px;
 }

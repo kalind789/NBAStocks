@@ -4,72 +4,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nba Stock Exchange!</title>
+    <title>NBA Stock Exchange</title>
 
-    <!-- Charlist-->
+    <!-- Chartist CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
-    <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
-
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        crossorigin="anonymous">
-
-    <link href="{{ url_for('static', filename='base.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='layout.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='buttons.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='forms.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='home.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
 </head>
 
+<body>
     <!-- Navigation -->
-    <nav>
-        <a href="/">Home</a>
-        <a href="/">Login</a>
-        <a href="/">Market</a>
-        <!-- <a href="/contact">Contact</a> -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">NBA Stocks</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="/market" class="nav-link">Market</a></li>
+                {% if current_user.is_authenticated %}
+                    <li class="nav-item"><a href="{{ url_for('logout') }}" class="nav-link">Logout</a></li>
+                {% else %}
+                    <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
+                {% endif %}
+            </ul>
+        </div>
     </nav>
-
-    <div class="jumbotron">
-        <h1 class="display-4"> hello </h1> 
-
+    
+    <div class="container">
+        <h2 class="text-center">Top Performers</h2>
+        <p class="text-center">This is a simple HTML page rendered by Flask.</p>
+    
+        <!-- Chart Container -->
+        <div class="ct-chart ct-perfect-fourth mt-5"></div>
     </div>
 
-    <!-- Main Content -->
-    <h1>Top performers</h1>
-    <p>This is a simple HTML page rendered by Flask.</p>
-
-    <div class="ct-chart ct-perfect-fourth"></div>
-    <script>
-        var data = {
-                // A labels array that can contain any sort of values
-                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
-                // Our series array that contains series objects or in this case series data arrays
-                series: [
-                    [5, 2, 4, 2, 0]
-                ]
-            };
-
-            // Create a new line chart object where as first parameter we pass in a selector
-            // that is resolving to our chart container element. The Second parameter
-            // is the actual data object.
-            new Chartist.Line('.ct-chart', data);
-    </script>
-
-    <!-- jQuery (choose one version) -->
-    <!-- Slim version (without AJAX and effects) -->
-    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" crossorigin="anonymous"></script> -->
-    <!-- Full version -->
+    <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-    <!-- Popper.js (required for Bootstrap's JavaScript plugins) -->
+    <!-- Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
-
     <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        crossorigin="anonymous"></script>
-
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
     <!-- Chartist JS -->
-    <script src="bower_components/chartist/dist/chartist.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+
+    <!-- Chart Script -->
+    <script>
+        class MyCharts {
+            constructor(xData, yData, width, height) {
+                this.xData = xData;
+                this.yData = yData;
+                this.width = width;
+                this.height = height;
+            }
+            createGraph() {
+                const data = {
+                    labels: this.xData,
+                    series: [this.yData]
+                };
+                const options = {
+                    width: this.width,
+                    height: this.height,
+                    axisX: {
+                        showGrid: true,
+                        showLabel: true
+                    },
+                    axisY: {
+                        offset: 60
+                    }
+                };
+                new Chartist.Line('.ct-chart', data, options);
+            }
+        }
+
+        $(document).ready(function() {
+            const XData = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+            // Fetch temperature data from the server
+            $.get('/temperature', function(resp) {
+                if (resp && resp.temperature) {
+                    const chart = new MyCharts(XData, resp.temperature, '500px', '500px');
+                    chart.createGraph();
+                } else {
+                    console.error("No temperature data received");
+                }
+            }).fail(function() {
+                console.error("Error fetching temperature data");
+            });
+        });
+    </script>
 </body>
 
 </html>

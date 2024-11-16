@@ -1,29 +1,33 @@
-<!-- templates/signup.html -->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-    <link href="{{ url_for('static', filename='base.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='layout.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='buttons.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='forms.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='home.css') }}" rel="stylesheet">
 </head>
 <body>
-    <h1>Sign Up</h1>
-    <form method="POST">
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" required>
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required>
-        <br>
-        <label for="confirm_password">Confirm Password:</label>
-        <input type="password" name="confirm_password" id="confirm_password" required>
-        <br>
-        <button type="submit">Sign Up</button>
-    </form>
+    <div class="login-container">
+        <h1>Sign Up</h1>
+        <form method="POST">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" required>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" name="confirm_password" id="confirm_password" required>
+            <button type="submit">Sign Up</button>
+
+            <a href="{{ url_for('login') }}" class="btn btn-secondary">Log In</a>
+        </form>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="flashes">
+                    {% set category, message = messages[-1] %} <!-- Display only the most recent message -->
+                    <li class="{{ category }}">{{ message }}</li>
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
 </body>
 </html>

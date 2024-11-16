@@ -4,13 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link href="{{ url_for('static', filename='base.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='layout.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='buttons.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='forms.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='home.css') }}" rel="stylesheet">
 </head>
-
 <body>
     <div class="login-container">
         <h1>Login</h1>
@@ -31,9 +26,8 @@
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 <ul class="flashes">
-                    {% for category, message in messages %}
-                        <li class="{{ category }}">{{ message }}</li>
-                    {% endfor %}
+                    {% set category, message = messages[-1] %} <!-- Display only the most recent message -->
+                    <li class="{{ category }}">{{ message }}</li>
                 </ul>
             {% endif %}
         {% endwith %}
