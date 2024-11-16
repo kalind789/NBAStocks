@@ -1,616 +1,616 @@
-,id,first_name,last_name
-0,1630173,Precious,Achiuwa
-1,203500,Steven,Adams
-2,1628389,Bam,Adebayo
-3,1630534,Ochai,Agbaji
-4,1631231,James,Akinjo
-5,1630583,Santi,Aldama
-6,1641725,Trey,Alexander
-7,1629638,Nickeil,Alexander-Walker
-8,1628960,Grayson,Allen
-9,1628386,Jarrett,Allen
-10,1630631,Jose,Alvarado
-11,203937,Kyle,Anderson
-12,203507,Giannis,Antetokounmpo
-13,1630175,Cole,Anthony
-14,1628384,OG,Anunoby
-15,1631317,Adonis,Arms
-16,1642378,Mark,Armstrong
-17,1630166,Deni,Avdija
-18,1629028,Deandre,Ayton
-19,1630654,Armando,Bacot
-20,1628963,Marvin,Bagley III
-21,1641735,Amari,Bailey
-22,1631116,Patrick,Baldwin Jr.
-23,1630163,LaMelo,Ball
-24,1628366,Lonzo,Ball
-25,1628964,Mo,Bamba
-26,1631094,Paolo,Banchero
-27,1630217,Desmond,Bane
-28,1630625,Dalano,Banton
-29,1631230,Dominick,Barlow
-30,203084,Harrison,Barnes
-31,1630567,Scottie,Barnes
-32,1629628,RJ,Barrett
-33,1629646,Charles,Bassey
-34,1641734,Emoni,Bates
-35,1628966,Keita,Bates-Diop
-36,1642419,Jamison,Battle
-37,201587,Nicolas,Batum
-38,203078,Bradley,Beal
-39,1627736,Malik,Beasley
-40,1630699,MarJon,Beauchamp
-41,1641777,Charles,Bediako
-42,1641736,Reece,Beekman
-43,1631262,Jules,Bernard
-44,1630180,Saddiq,Bey
-45,1629048,Goga,Bitadze
-46,1641931,Onuralp,Bitim
-47,1641710,Anthony,Black
-48,1641778,Leaky,Black
-49,203992,Bogdan,Bogdanović
-50,202711,Bojan,Bogdanović
-51,1629626,Bol,Bol
-52,1641737,Adem,Bona
-53,1626164,Devin,Booker
-54,1630527,Brandon,Boston Jr.
-55,1628449,Chris,Boucher
-56,1631103,Malaki,Branham
-57,1631128,Christian,Braun
-58,1641779,Jalen,Bridges
-59,1628969,Mikal,Bridges
-60,1628970,Miles,Bridges
-61,1627763,Malcolm,Brogdon
-62,1628415,Dillon,Brooks
-63,1631232,Keion,Brooks Jr.
-64,1628971,Bruce,Brown
-65,1627759,Jaylen,Brown
-66,1631112,Kendall,Brown
-67,1641738,Kobe,Brown
-68,1629650,Moses,Brown
-69,1629718,Charlie,Brown Jr.
-70,1628973,Jalen,Brunson
-71,1628418,Thomas,Bryant
-72,1641723,Kobe,Bufkin
-73,202692,Alec,Burks
-74,1630215,Jared,Butler
-75,202710,Jimmy,Butler
-76,1641824,Matas,Buzelis
-77,1631288,Jamal,Cain
-78,203484,Kentavious,Caldwell-Pope
-79,1641739,Toumani,Camara
-80,203991,Clint,Capela
-81,1642382,Branden,Carlson
-82,1642267,Carlton,Carrington
-83,1642269,Devin,Carter
-84,1628975,Jevon,Carter
-85,1628976,Wendell,Carter Jr.
-86,1630618,D.J.,Carton
-87,1627936,Alex,Caruso
-88,1642264,Stephon,Castle
-89,1630658,Colin,Castleton
-90,1630577,Julian,Champagnie
-91,1630551,Justin,Champagnie
-92,1642279,Ulrich,Chomche
-93,1642353,Cam,Christie
-94,1631108,Max,Christie
-95,1630528,Josh,Christopher
-96,1631321,Sidy,Cissoko
-97,1641740,Jaylen,Clark
-98,1629634,Brandon,Clarke
-99,203903,Jordan,Clarkson
-100,1629651,Nic,Claxton
-101,1642270,Donovan,Clingan
-102,1641730,Noah,Clowney
-103,1629599,Amir,Coffey
-104,1642268,Isaiah,Collier
-105,1628381,John,Collins
-106,1628380,Zach,Collins
-107,201144,Mike,Conley
-108,1626192,Pat,Connaughton
-109,1641731,Bilal,Coulibaly
-110,1641741,Ricky,Council IV
-111,1628470,Torrey,Craig
-112,1642384,Isaiah,Crawford
-113,1630622,Jalen,Crutcher
-114,1629633,Jarrett,Culver
-115,1630595,Cade,Cunningham
-116,203552,Seth,Curry
-117,201939,Stephen,Curry
-118,1642359,Pacôme,Dadiet
-119,1641915,Caleb,Daniels
-120,1630700,Dyson,Daniels
-121,1642368,N'Faly,Dante
-122,1630268,Nate,Darling
-123,203076,Anthony,Davis
-124,1631098,Johnny,Davis
-125,1629056,Terence,Davis
-126,1631120,JD,Davison
-127,201942,DeMar,DeRozan
-128,1628978,Donte,DiVincenzo
-129,1631217,Moussa,Diabaté
-130,1629603,Mamadi,Diakite
-131,1641711,Gradey,Dick
-132,1631172,Ousmane,Dieng
-133,1642265,Rob,Dillingham
-134,203915,Spencer,Dinwiddie
-135,1629029,Luka,Dončić
-136,1629652,Luguentz,Dort
-137,1630245,Ayo,Dosunmu
-138,1630288,Jeff,Dowtin Jr.
-139,1628408,PJ,Dozier
-140,203083,Andre,Drummond
-141,1630537,Chris,Duarte
-142,1642505,Alex,Ducas
-143,1630561,David,Duke Jr.
-144,1627739,Kris,Dunn
-145,1642346,Ryan,Dunn
-146,201142,Kevin,Durant
-147,1631105,Jalen,Duren
-148,1631106,Tari,Eason
-149,1641744,Zach,Edey
-150,1630162,Anthony,Edwards
-151,1642399,Jesse,Edwards
-152,1642348,Justin,Edwards
-153,1630556,Kessler,Edwards
-154,1642407,Boogie,Ellis
-155,1631165,Keon,Ellis
-156,203954,Joel,Embiid
-157,1642401,Aaron,Estrada
-158,1629234,Drew,Eubanks
-159,1641787,Tosan,Evbuomwan
-160,203957,Danté,Exum
-161,1628981,Bruno,Fernando
-162,1642499,Max,Fiedler
-163,1642271,Kyle,Filipowski
-164,1627827,Dorian,Finney-Smith
-165,1641745,Adam,Flagler
-166,1642280,Trentyn,Flowers
-167,1630201,Malachi,Flynn
-168,1631323,Simone,Fontecchio
-169,1628368,De'Aaron,Fox
-170,1642402,Enrique,Freeman
-171,1641847,Andrew,Funk
-172,1642277,Johnny,Furphy
-173,1629655,Daniel,Gafford
-174,1629636,Darius,Garland
-175,1630568,Luka,Garza
-176,1641718,Keyonte,George
-177,1642273,Kyshawn,George
-178,202331,Paul,George
-179,201959,Taj,Gibson
-180,1630581,Josh,Giddey
-181,1628385,Harry,Giles III
-182,1628983,Shai,Gilgeous-Alexander
-183,1630264,Anthony,Gill
-184,1631221,Collin,Gillespie
-185,1631367,Jacob,Gilyard
-186,203497,Rudy,Gobert
-187,1630692,Jordan,Goodwin
-188,203932,Aaron,Gordon
-189,201569,Eric,Gordon
-190,1641789,Jazian,Gortman
-191,1628984,Devonte',Graham
-192,203924,Jerami,Grant
-193,1631260,AJ,Green
-194,203110,Draymond,Green
-195,1630224,Jalen,Green
-196,1629750,Javonte,Green
-197,201145,Jeff,Green
-198,1630182,Josh,Green
-199,1629656,Quentin,Grimes
-200,1631243,Mouhamed,Gueye
-201,1629060,Rui,Hachimura
-202,1630169,Tyrese,Haliburton
-203,1641790,PJ,Hall
-204,203501,Tim,Hardaway Jr.
-205,201935,James,Harden
-206,1630702,Jaden,Hardy
-207,1641989,Elijah,Harkless
-208,1631199,Ron,Harper Jr.
-209,203914,Gary,Harris
-210,1630284,Kevon,Harris
-211,202699,Tobias,Harris
-212,1628404,Josh,Hart
-213,1628392,Isaiah,Hartenstein
-214,1630573,Sam,Hauser
-215,1641722,Jordan,Hawkins
-216,1629637,Jaxson,Hayes
-217,1630165,Killian,Hayes
-218,1630703,Scoot,Henderson
-219,1641707,Taylor,Hendricks
-220,1629639,Tyler,Herro
-221,1627741,Buddy,Hield
-222,1629312,Haywood,Highsmith
-223,1630792,Malcolm,Hill
-224,1642396,Blake,Hinson
-225,1630207,Nate,Hinton
-226,1628988,Aaron,Holiday
-227,201950,Jrue,Holiday
-228,1641842,Ronald,Holland II
-229,1626158,Richaun,Holmes
-230,1641747,DaRon,Holmes II
-231,1631096,Chet,Holmgren
-232,1641720,Jalen,Hood-Schifino
-233,201143,Al,Horford
-234,1629659,Talen,Horton-Tucker
-235,1631216,Caleb,Houstan
-236,1641724,Jett,Howard
-237,1628989,Kevin,Huerter
-238,1630643,Jay,Huff
-239,1630574,Ariel,Hukporti
-240,1629631,De'Andre,Hunter
-241,1630538,Bones,Hyland
-242,1642345,Oso,Ighodaro
-243,204060,Joe,Ingles
-244,1627742,Brandon,Ingram
-245,1631127,Harrison,Ingram
-246,202681,Kyrie,Irving
-247,1628371,Jonathan,Isaac
-248,1631093,Jaden,Ivey
-249,1641713,GG,Jackson
-250,1630543,Isaiah,Jackson
-251,1631245,Quenton,Jackson
-252,202704,Reggie,Jackson
-253,1641748,Andre,Jackson Jr.
-254,1628991,Jaren,Jackson Jr.
-255,1631218,Trayce,Jackson-Davis
-256,1642355,Bronny,James
-257,2544,LeBron,James
-258,1631170,Jaime,Jaquez Jr.
-259,1629610,DaQuan,Jeffries
-260,1641998,Trey,Jemison
-261,1642450,Daniss,Jenkins
-262,1629660,Ty,Jerome
-263,1630198,Isaiah,Joe
-264,1642358,AJ,Johnson
-265,1629661,Cameron,Johnson
-266,1630552,Jalen,Johnson
-267,201949,James,Johnson
-268,1629640,Keldon,Johnson
-269,1630553,Keon,Johnson
-270,1642352,Keshad,Johnson
-271,1641749,Keyontae,Johnson
-272,203999,Nikola,Jokić
-273,1641732,Colby,Jones
-274,1641794,Dillon,Jones
-275,1630529,Herbert,Jones
-276,1642403,Isaac,Jones
-277,1630539,Kai,Jones
-278,1630222,Mason,Jones
-279,1642461,Spencer,Jones
-280,1630200,Tre,Jones
-281,1626145,Tyus,Jones
-282,1627884,Derrick,Jones Jr.
-283,201599,DeAndre,Jordan
-284,202709,Cory,Joseph
-285,1631107,Nikola,Jović
-286,1630548,Johnny,Juzang
-287,1626163,Frank,Kaminsky
-288,1642530,Yuki,Kawamura
-289,1630283,Kylor,Kelley
-290,1628379,Luke,Kennard
-291,1631117,Walker,Kessler
-292,1630557,Corey,Kispert
-293,1628467,Maxi,Kleber
-294,1641752,Bobi,Klintman
-295,1642261,Dalton,Knecht
-296,1628995,Kevin,Knox II
-297,1642278,Tyler,Kolek
-298,1631132,Christian,Koloko
-299,1629723,John,Konchar
-300,1642046,Miller,Kopp
-301,1628436,Luke,Kornet
-302,1630249,Vít,Krejčí
-303,1630228,Jonathan,Kuminga
-304,1628398,Kyle,Kuzma
-305,1631222,Jake,LaRavia
-306,203897,Zach,LaVine
-307,1627746,Skal,Labissiere
-308,1629111,Jock,Landale
-309,1641796,Pelle,Larsson
-310,1627747,Caris,LeVert
-311,1627814,Damion,Lee
-312,203458,Alex,Len
-313,202695,Kawhi,Leonard
-314,1642502,Malevy,Leons
-315,1641721,Maxwell,Lewis
-316,1630184,Kira,Lewis Jr.
-317,1630604,E.J.,Liddell
-318,203081,Damian,Lillard
-319,1629642,Nassir,Little
-320,1641726,Dereck,Lively II
-321,1641753,Chris,Livingston
-322,1631254,Kenneth,Lofton Jr.
-323,1626172,Kevon,Looney
-324,201572,Brook,Lopez
-325,201567,Kevin,Love
-326,200768,Kyle,Lowry
-327,1641754,Seth,Lundy
-328,1626168,Trey,Lyles
-329,1627748,Thon,Maker
-330,1630572,Sandro,Mamukelashvili
-331,1629611,Terance,Mann
-332,1630544,Tre,Mann
-333,1628374,Lauri,Markkanen
-334,1630230,Naji,Marshall
-335,1628997,Caleb,Martin
-336,1628998,Cody,Martin
-337,1641798,Jaylen,Martin
-338,1630231,KJ,Martin
-339,1631213,Tyrese,Martin
-340,1629726,Garrison,Mathews
-341,1631097,Bennedict,Mathurin
-342,1631255,Karlo,Matković
-343,1630178,Tyrese,Maxey
-344,1630219,Skylar,Mays
-345,1630540,Miles,McBride
-346,1642272,Jared,McCain
-347,1630644,Mac,McClung
-348,203468,CJ,McCollum
-349,204456,T.J.,McConnell
-350,1631322,Javante,McCoy
-351,1641755,Kevin,McCullar Jr.
-352,1630183,Jaden,McDaniels
-353,1629667,Jalen,McDaniels
-354,1631121,Bryce,McGowens
-355,1629162,Jordan,McLaughlin
-356,1629098,Jack,McVeigh
-357,1629001,De'Anthony,Melton
-358,1641877,Nathan,Mensah
-359,1630241,Sam,Merrill
-360,203995,Vasilije,Micić
-361,203114,Khris,Middleton
-362,1641706,Brandon,Miller
-363,1641801,Emanuel,Miller
-364,1641757,Jordan,Miller
-365,1631159,Leonard,Miller
-366,201988,Patty,Mills
-367,1629003,Shake,Milton
-368,1631303,Justin,Minaya
-369,1642434,Riley,Minix
-370,1631169,Josh,Minott
-371,1641758,Judah,Mintz
-372,1642274,Yves,Missi
-373,1642349,Ajay,Mitchell
-374,1630558,Davion,Mitchell
-375,1628378,Donovan,Mitchell
-376,1630596,Evan,Mobley
-377,1630600,Isaiah,Mobley
-378,1642367,Jonathan,Mogbo
-379,1628370,Malik,Monk
-380,1630541,Moses,Moody
-381,1631386,Tazé,Moore
-382,1631111,Wendell,Moore Jr.
-383,1629630,Ja,Morant
-384,202693,Markieff,Morris
-385,1628420,Monté,Morris
-386,1630530,Trey,Murphy III
-387,1627749,Dejounte,Murray
-388,1627750,Jamal,Murray
-389,1631099,Keegan,Murray
-390,1631200,Kris,Murray
-391,1629004,Svi,Mykhailiuk
-392,1631250,Pete,Nance
-393,1626204,Larry,Nance Jr.
-394,1629614,Andrew,Nembhard
-395,1630174,Aaron,Nesmith
-396,1641803,Tristen,Newton
-397,1627777,Georges,Niang
-398,1630227,Daishen,Nix
-399,1630192,Zeke,Nnaji
-400,1629669,Jaylen,Nowell
-401,1641806,Markquis,Nowell
-402,203994,Jusuf,Nurkić
-403,1626220,Royce,O'Neale
-404,1629643,Chuma,Okeke
-405,1629006,Josh,Okogie
-406,1630168,Onyeka,Okongwu
-407,1630171,Isaac,Okoro
-408,1642439,Quincy,Olivari
-409,203482,Kelly,Olynyk
-410,1630647,Eugene,Omoruyi
-411,1629671,Miye,Oni
-412,1626162,Kelly,Oubre Jr.
-413,1628394,Anžejs,Pasečņiks
-414,101108,Chris,Paul
-415,1626166,Cameron,Payne
-416,1627780,Gary,Payton II
-417,1641970,Mãozinha,Pereira
-418,1641809,Drew,Peterson
-419,1641763,Julian,Phillips
-420,1629618,Jalen,Pickett
-421,1630590,Scotty,Pippen Jr.
-422,1631342,Daeqwon,Plowden
-423,203486,Mason,Plumlee
-424,1641764,Brandin,Podziemski
-425,1629673,Jordan,Poole
-426,1641854,Craig,Porter Jr.
-427,1629645,Kevin,Porter Jr.
-428,1629008,Michael,Porter Jr.
-429,1626171,Bobby,Portis
-430,204001,Kristaps,Porziņģis
-431,1642366,Quinten,Post
-432,1630695,Micah,Potter
-433,203939,Dwight,Powell
-434,1626181,Norman,Powell
-435,1630554,Jason,Preston
-436,1627752,Taurean,Prince
-437,1630202,Payton,Pritchard
-438,1641765,Olivier-Maxence,Prosper
-439,1642389,Zyon,Pullin
-440,1627751,Jakob,Pöltl
-441,1630243,Trevelin,Queen
-442,1629674,Neemias,Queta
-443,1630193,Immanuel,Quickley
-444,1631311,Lester,Quinones
-445,1630186,Jahmi'us,Ramsey
-446,203944,Julius,Randle
-447,1641871,Duop,Reath
-448,1630559,Austin,Reaves
-449,1629629,Cam,Reddish
-450,1630194,Paul,Reed
-451,1642024,Alex,Reese
-452,1641810,Antonio,Reeves
-453,1629675,Naz,Reid
-454,1631197,Jared,Rhoden
-455,1630208,Nick,Richards
-456,1626196,Josh,Richardson
-457,1642019,Will,Richardson
-458,1642258,Zaccharie,Risacher
-459,1641857,Liam,Robbins
-460,1629130,Duncan,Robinson
-461,1629011,Mitchell,Robinson
-462,1631115,Orlando,Robinson
-463,1630526,Jeremiah,Robinson-Earl
-464,1631223,David,Roddy
-465,1631157,Ryan,Rollins
-466,1642050,Jackson,Rowe
-467,1626179,Terry,Rozier
-468,1641712,Rayan,Rupert
-469,1626156,D'Angelo,Russell
-470,1642504,Cormac,Ryan
-471,1630346,Matt,Ryan
-472,1627734,Domantas,Sabonis
-473,1642275,Tidjane,Salaün
-474,1631257,Jermaine,Samuels Jr.
-475,1641766,Adama,Sanogo
-476,1630611,Gui,Santos
-477,1642259,Alexandre,Sarr
-478,1631204,Marcus,Sasser
-479,1631248,Baylor,Scheierman
-480,203471,Dennis,Schröder
-481,1630206,Jay,Scrubb
-482,1631220,Dereon,Seabron
-483,1630578,Alperen,Sengun
-484,1641729,Brice,Sensabaugh
-485,1629012,Collin,Sexton
-486,1629013,Landry,Shamet
-487,1630545,Terrence,Shannon Jr.
-488,1642481,Jamarion,Sharp
-489,1630549,Day'Ron,Sharpe
-490,1631101,Shaedon,Sharpe
-491,1642347,Jamal,Shead
-492,1641767,Ben,Sheppard
-493,1642263,Reed,Sheppard
-494,1627783,Pascal,Siakam
-495,1627732,Ben,Simmons
-496,1629014,Anfernee,Simons
-497,1642354,K.J.,Simpson
-498,1630579,Jericho,Sims
-499,1631376,Dmytro,Skapintsev
-500,1641771,Jalen,Slawson
-501,1630606,Javonte,Smart
-502,203935,Marcus,Smart
-503,1630696,Dru,Smith
-504,1630188,Jalen,Smith
-505,1642449,Tolu,Smith
-506,1641890,Tyler,Smith
-507,1629015,Zhaire,Smith
-508,1631095,Jabari,Smith Jr.
-509,1641733,Nick,Smith Jr.
-510,1631110,Jeremy,Sochan
-511,1642285,Cam,Spencer
-512,1630311,Pat,Spencer
-513,1630531,Jaden,Springer
-514,1641815,Isaiah,Stevens
-515,1630205,Lamar,Stevens
-516,1641907,Erik,Stevenson
-517,1630569,DJ,Steward
-518,1630191,Isaiah,Stewart
-519,1631124,Julian,Strawther
-520,1629622,Max,Strus
-521,1630591,Jalen,Suggs
-522,1631306,Cole,Swider
-523,1630256,Jae'Sean,Tate
-524,1628369,Jayson,Tatum
-525,1630678,Terry,Taylor
-526,202066,Garrett,Temple
-527,1631207,Dalen,Terry
-528,1628464,Daniel,Theis
-529,1630271,Brodric,Thomas
-530,1630560,Cam,Thomas
-531,1641708,Amen,Thompson
-532,1641709,Ausar,Thompson
-533,1630679,Ethan,Thompson
-534,202691,Klay,Thompson
-535,202684,Tristan,Thompson
-536,1630550,JT,Thor
-537,1629680,Matisse,Thybulle
-538,1630214,Xavier,Tillman
-539,1642260,Nikola,Topić
-540,1631210,Jacob,Toppin
-541,1630167,Obi,Toppin
-542,1626157,Karl-Anthony,Towns
-543,1642422,Armel,Traoré
-544,1631247,Luke,Travers
-545,1629018,Gary,Trent Jr.
-546,1631131,Oscar,Tshiebwe
-547,1630733,Jordan,Tucker
-548,200782,P.J.,Tucker
-549,1626167,Myles,Turner
-550,1641816,Hunter,Tyson
-551,1642281,Jaylon,Tyson
-552,1630649,Stanley,Umude
-553,202685,Jonas,Valančiūnas
-554,1627832,Fred,VanVleet
-555,1629020,Jarred,Vanderbilt
-556,1630170,Devin,Vassell
-557,1629216,Gabe,Vincent
-558,1641774,Tristan,Vukcevic
-559,202696,Nikola,Vučević
-560,1629731,Dean,Wade
-561,1630532,Franz,Wagner
-562,1629021,Moritz,Wagner
-563,1631133,Jabari,Walker
-564,1641716,Jarace,Walker
-565,1629022,Lonnie,Walker IV
-566,1641717,Cason,Wallace
-567,1630811,Keaton,Wallace
-568,1641775,Jordan,Walsh
-569,1642266,Ja'Kobe,Walter
-570,1642276,Kel'el,Ware
-571,203933,T.J.,Warren
-572,1629023,P.J.,Washington
-573,1631102,TyTy,Washington Jr.
-574,1630322,Lindy,Waters III
-575,1630570,Trendon,Watford
-576,1641817,Anton,Watson
-577,1631212,Peyton,Watson
-578,1642377,Jaylen,Wells
-579,1641705,Victor,Wembanyama
-580,1631104,Blake,Wesley
-581,201566,Russell,Westbrook
-582,1629632,Coby,White
-583,1628401,Derrick,White
-584,1641727,Dariq,Whitehead
-585,1641715,Cam,Whitmore
-586,1630598,Aaron,Wiggins
-587,203952,Andrew,Wiggins
-588,1631214,Alondes,Williams
-589,1630314,Brandon,Williams
-590,1642262,Cody,Williams
-591,1629684,Grant,Williams
-592,1631114,Jalen,Williams
-593,1631119,Jaylin,Williams
-594,1629026,Kenrich,Williams
-595,1631109,Mark,Williams
-596,1631466,Nate,Williams
-597,1630172,Patrick,Williams
-598,1630533,Ziaire,Williams
-599,1629057,Robert,Williams III
-600,1631246,Vince,Williams Jr.
-601,1629627,Zion,Williamson
-602,1630592,Jalen,Wilson
-603,1630164,James,Wiseman
-604,1626174,Christian,Wood
-605,1642473,Moses,Wood
-606,1626153,Delon,Wright
-607,1627824,Guerschon,Yabusele
-608,1642385,Cui,Yongxi
-609,1629027,Trae,Young
-610,203469,Cody,Zeller
-611,1627826,Ivica,Zubac
-612,1641783,Tristan,da Silva
-613,1628427,Vlatko,Čančar
-614,203967,Dario,Šarić
+,Unnamed: 0,id,first_name,last_name,full_name
+0,0,1630173,Precious,Achiuwa,Precious Achiuwa
+1,1,203500,Steven,Adams,Steven Adams
+2,2,1628389,Bam,Adebayo,Bam Adebayo
+3,3,1630534,Ochai,Agbaji,Ochai Agbaji
+4,4,1631231,James,Akinjo,James Akinjo
+5,5,1630583,Santi,Aldama,Santi Aldama
+6,6,1641725,Trey,Alexander,Trey Alexander
+7,7,1629638,Nickeil,Alexander-Walker,Nickeil Alexander-Walker
+8,8,1628960,Grayson,Allen,Grayson Allen
+9,9,1628386,Jarrett,Allen,Jarrett Allen
+10,10,1630631,Jose,Alvarado,Jose Alvarado
+11,11,203937,Kyle,Anderson,Kyle Anderson
+12,12,203507,Giannis,Antetokounmpo,Giannis Antetokounmpo
+13,13,1630175,Cole,Anthony,Cole Anthony
+14,14,1628384,OG,Anunoby,OG Anunoby
+15,15,1631317,Adonis,Arms,Adonis Arms
+16,16,1642378,Mark,Armstrong,Mark Armstrong
+17,17,1630166,Deni,Avdija,Deni Avdija
+18,18,1629028,Deandre,Ayton,Deandre Ayton
+19,19,1630654,Armando,Bacot,Armando Bacot
+20,20,1628963,Marvin,Bagley III,Marvin Bagley III
+21,21,1641735,Amari,Bailey,Amari Bailey
+22,22,1631116,Patrick,Baldwin Jr.,Patrick Baldwin Jr.
+23,23,1630163,LaMelo,Ball,LaMelo Ball
+24,24,1628366,Lonzo,Ball,Lonzo Ball
+25,25,1628964,Mo,Bamba,Mo Bamba
+26,26,1631094,Paolo,Banchero,Paolo Banchero
+27,27,1630217,Desmond,Bane,Desmond Bane
+28,28,1630625,Dalano,Banton,Dalano Banton
+29,29,1631230,Dominick,Barlow,Dominick Barlow
+30,30,203084,Harrison,Barnes,Harrison Barnes
+31,31,1630567,Scottie,Barnes,Scottie Barnes
+32,32,1629628,RJ,Barrett,RJ Barrett
+33,33,1629646,Charles,Bassey,Charles Bassey
+34,34,1641734,Emoni,Bates,Emoni Bates
+35,35,1628966,Keita,Bates-Diop,Keita Bates-Diop
+36,36,1642419,Jamison,Battle,Jamison Battle
+37,37,201587,Nicolas,Batum,Nicolas Batum
+38,38,203078,Bradley,Beal,Bradley Beal
+39,39,1627736,Malik,Beasley,Malik Beasley
+40,40,1630699,MarJon,Beauchamp,MarJon Beauchamp
+41,41,1641777,Charles,Bediako,Charles Bediako
+42,42,1641736,Reece,Beekman,Reece Beekman
+43,43,1631262,Jules,Bernard,Jules Bernard
+44,44,1630180,Saddiq,Bey,Saddiq Bey
+45,45,1629048,Goga,Bitadze,Goga Bitadze
+46,46,1641931,Onuralp,Bitim,Onuralp Bitim
+47,47,1641710,Anthony,Black,Anthony Black
+48,48,1641778,Leaky,Black,Leaky Black
+49,49,203992,Bogdan,Bogdanović,Bogdan Bogdanović
+50,50,202711,Bojan,Bogdanović,Bojan Bogdanović
+51,51,1629626,Bol,Bol,Bol Bol
+52,52,1641737,Adem,Bona,Adem Bona
+53,53,1626164,Devin,Booker,Devin Booker
+54,54,1630527,Brandon,Boston Jr.,Brandon Boston Jr.
+55,55,1628449,Chris,Boucher,Chris Boucher
+56,56,1631103,Malaki,Branham,Malaki Branham
+57,57,1631128,Christian,Braun,Christian Braun
+58,58,1641779,Jalen,Bridges,Jalen Bridges
+59,59,1628969,Mikal,Bridges,Mikal Bridges
+60,60,1628970,Miles,Bridges,Miles Bridges
+61,61,1627763,Malcolm,Brogdon,Malcolm Brogdon
+62,62,1628415,Dillon,Brooks,Dillon Brooks
+63,63,1631232,Keion,Brooks Jr.,Keion Brooks Jr.
+64,64,1628971,Bruce,Brown,Bruce Brown
+65,65,1627759,Jaylen,Brown,Jaylen Brown
+66,66,1631112,Kendall,Brown,Kendall Brown
+67,67,1641738,Kobe,Brown,Kobe Brown
+68,68,1629650,Moses,Brown,Moses Brown
+69,69,1629718,Charlie,Brown Jr.,Charlie Brown Jr.
+70,70,1628973,Jalen,Brunson,Jalen Brunson
+71,71,1628418,Thomas,Bryant,Thomas Bryant
+72,72,1641723,Kobe,Bufkin,Kobe Bufkin
+73,73,202692,Alec,Burks,Alec Burks
+74,74,1630215,Jared,Butler,Jared Butler
+75,75,202710,Jimmy,Butler,Jimmy Butler
+76,76,1641824,Matas,Buzelis,Matas Buzelis
+77,77,1631288,Jamal,Cain,Jamal Cain
+78,78,203484,Kentavious,Caldwell-Pope,Kentavious Caldwell-Pope
+79,79,1641739,Toumani,Camara,Toumani Camara
+80,80,203991,Clint,Capela,Clint Capela
+81,81,1642382,Branden,Carlson,Branden Carlson
+82,82,1642267,Carlton,Carrington,Carlton Carrington
+83,83,1642269,Devin,Carter,Devin Carter
+84,84,1628975,Jevon,Carter,Jevon Carter
+85,85,1628976,Wendell,Carter Jr.,Wendell Carter Jr.
+86,86,1630618,D.J.,Carton,D.J. Carton
+87,87,1627936,Alex,Caruso,Alex Caruso
+88,88,1642264,Stephon,Castle,Stephon Castle
+89,89,1630658,Colin,Castleton,Colin Castleton
+90,90,1630577,Julian,Champagnie,Julian Champagnie
+91,91,1630551,Justin,Champagnie,Justin Champagnie
+92,92,1642279,Ulrich,Chomche,Ulrich Chomche
+93,93,1642353,Cam,Christie,Cam Christie
+94,94,1631108,Max,Christie,Max Christie
+95,95,1630528,Josh,Christopher,Josh Christopher
+96,96,1631321,Sidy,Cissoko,Sidy Cissoko
+97,97,1641740,Jaylen,Clark,Jaylen Clark
+98,98,1629634,Brandon,Clarke,Brandon Clarke
+99,99,203903,Jordan,Clarkson,Jordan Clarkson
+100,100,1629651,Nic,Claxton,Nic Claxton
+101,101,1642270,Donovan,Clingan,Donovan Clingan
+102,102,1641730,Noah,Clowney,Noah Clowney
+103,103,1629599,Amir,Coffey,Amir Coffey
+104,104,1642268,Isaiah,Collier,Isaiah Collier
+105,105,1628381,John,Collins,John Collins
+106,106,1628380,Zach,Collins,Zach Collins
+107,107,201144,Mike,Conley,Mike Conley
+108,108,1626192,Pat,Connaughton,Pat Connaughton
+109,109,1641731,Bilal,Coulibaly,Bilal Coulibaly
+110,110,1641741,Ricky,Council IV,Ricky Council IV
+111,111,1628470,Torrey,Craig,Torrey Craig
+112,112,1642384,Isaiah,Crawford,Isaiah Crawford
+113,113,1630622,Jalen,Crutcher,Jalen Crutcher
+114,114,1629633,Jarrett,Culver,Jarrett Culver
+115,115,1630595,Cade,Cunningham,Cade Cunningham
+116,116,203552,Seth,Curry,Seth Curry
+117,117,201939,Stephen,Curry,Stephen Curry
+118,118,1642359,Pacôme,Dadiet,Pacôme Dadiet
+119,119,1641915,Caleb,Daniels,Caleb Daniels
+120,120,1630700,Dyson,Daniels,Dyson Daniels
+121,121,1642368,N'Faly,Dante,N'Faly Dante
+122,122,1630268,Nate,Darling,Nate Darling
+123,123,203076,Anthony,Davis,Anthony Davis
+124,124,1631098,Johnny,Davis,Johnny Davis
+125,125,1629056,Terence,Davis,Terence Davis
+126,126,1631120,JD,Davison,JD Davison
+127,127,201942,DeMar,DeRozan,DeMar DeRozan
+128,128,1628978,Donte,DiVincenzo,Donte DiVincenzo
+129,129,1631217,Moussa,Diabaté,Moussa Diabaté
+130,130,1629603,Mamadi,Diakite,Mamadi Diakite
+131,131,1641711,Gradey,Dick,Gradey Dick
+132,132,1631172,Ousmane,Dieng,Ousmane Dieng
+133,133,1642265,Rob,Dillingham,Rob Dillingham
+134,134,203915,Spencer,Dinwiddie,Spencer Dinwiddie
+135,135,1629029,Luka,Dončić,Luka Dončić
+136,136,1629652,Luguentz,Dort,Luguentz Dort
+137,137,1630245,Ayo,Dosunmu,Ayo Dosunmu
+138,138,1630288,Jeff,Dowtin Jr.,Jeff Dowtin Jr.
+139,139,1628408,PJ,Dozier,PJ Dozier
+140,140,203083,Andre,Drummond,Andre Drummond
+141,141,1630537,Chris,Duarte,Chris Duarte
+142,142,1642505,Alex,Ducas,Alex Ducas
+143,143,1630561,David,Duke Jr.,David Duke Jr.
+144,144,1627739,Kris,Dunn,Kris Dunn
+145,145,1642346,Ryan,Dunn,Ryan Dunn
+146,146,201142,Kevin,Durant,Kevin Durant
+147,147,1631105,Jalen,Duren,Jalen Duren
+148,148,1631106,Tari,Eason,Tari Eason
+149,149,1641744,Zach,Edey,Zach Edey
+150,150,1630162,Anthony,Edwards,Anthony Edwards
+151,151,1642399,Jesse,Edwards,Jesse Edwards
+152,152,1642348,Justin,Edwards,Justin Edwards
+153,153,1630556,Kessler,Edwards,Kessler Edwards
+154,154,1642407,Boogie,Ellis,Boogie Ellis
+155,155,1631165,Keon,Ellis,Keon Ellis
+156,156,203954,Joel,Embiid,Joel Embiid
+157,157,1642401,Aaron,Estrada,Aaron Estrada
+158,158,1629234,Drew,Eubanks,Drew Eubanks
+159,159,1641787,Tosan,Evbuomwan,Tosan Evbuomwan
+160,160,203957,Danté,Exum,Danté Exum
+161,161,1628981,Bruno,Fernando,Bruno Fernando
+162,162,1642499,Max,Fiedler,Max Fiedler
+163,163,1642271,Kyle,Filipowski,Kyle Filipowski
+164,164,1627827,Dorian,Finney-Smith,Dorian Finney-Smith
+165,165,1641745,Adam,Flagler,Adam Flagler
+166,166,1642280,Trentyn,Flowers,Trentyn Flowers
+167,167,1630201,Malachi,Flynn,Malachi Flynn
+168,168,1631323,Simone,Fontecchio,Simone Fontecchio
+169,169,1628368,De'Aaron,Fox,De'Aaron Fox
+170,170,1642402,Enrique,Freeman,Enrique Freeman
+171,171,1641847,Andrew,Funk,Andrew Funk
+172,172,1642277,Johnny,Furphy,Johnny Furphy
+173,173,1629655,Daniel,Gafford,Daniel Gafford
+174,174,1629636,Darius,Garland,Darius Garland
+175,175,1630568,Luka,Garza,Luka Garza
+176,176,1641718,Keyonte,George,Keyonte George
+177,177,1642273,Kyshawn,George,Kyshawn George
+178,178,202331,Paul,George,Paul George
+179,179,201959,Taj,Gibson,Taj Gibson
+180,180,1630581,Josh,Giddey,Josh Giddey
+181,181,1628385,Harry,Giles III,Harry Giles III
+182,182,1628983,Shai,Gilgeous-Alexander,Shai Gilgeous-Alexander
+183,183,1630264,Anthony,Gill,Anthony Gill
+184,184,1631221,Collin,Gillespie,Collin Gillespie
+185,185,1631367,Jacob,Gilyard,Jacob Gilyard
+186,186,203497,Rudy,Gobert,Rudy Gobert
+187,187,1630692,Jordan,Goodwin,Jordan Goodwin
+188,188,203932,Aaron,Gordon,Aaron Gordon
+189,189,201569,Eric,Gordon,Eric Gordon
+190,190,1641789,Jazian,Gortman,Jazian Gortman
+191,191,1628984,Devonte',Graham,Devonte' Graham
+192,192,203924,Jerami,Grant,Jerami Grant
+193,193,1631260,AJ,Green,AJ Green
+194,194,203110,Draymond,Green,Draymond Green
+195,195,1630224,Jalen,Green,Jalen Green
+196,196,1629750,Javonte,Green,Javonte Green
+197,197,201145,Jeff,Green,Jeff Green
+198,198,1630182,Josh,Green,Josh Green
+199,199,1629656,Quentin,Grimes,Quentin Grimes
+200,200,1631243,Mouhamed,Gueye,Mouhamed Gueye
+201,201,1629060,Rui,Hachimura,Rui Hachimura
+202,202,1630169,Tyrese,Haliburton,Tyrese Haliburton
+203,203,1641790,PJ,Hall,PJ Hall
+204,204,203501,Tim,Hardaway Jr.,Tim Hardaway Jr.
+205,205,201935,James,Harden,James Harden
+206,206,1630702,Jaden,Hardy,Jaden Hardy
+207,207,1641989,Elijah,Harkless,Elijah Harkless
+208,208,1631199,Ron,Harper Jr.,Ron Harper Jr.
+209,209,203914,Gary,Harris,Gary Harris
+210,210,1630284,Kevon,Harris,Kevon Harris
+211,211,202699,Tobias,Harris,Tobias Harris
+212,212,1628404,Josh,Hart,Josh Hart
+213,213,1628392,Isaiah,Hartenstein,Isaiah Hartenstein
+214,214,1630573,Sam,Hauser,Sam Hauser
+215,215,1641722,Jordan,Hawkins,Jordan Hawkins
+216,216,1629637,Jaxson,Hayes,Jaxson Hayes
+217,217,1630165,Killian,Hayes,Killian Hayes
+218,218,1630703,Scoot,Henderson,Scoot Henderson
+219,219,1641707,Taylor,Hendricks,Taylor Hendricks
+220,220,1629639,Tyler,Herro,Tyler Herro
+221,221,1627741,Buddy,Hield,Buddy Hield
+222,222,1629312,Haywood,Highsmith,Haywood Highsmith
+223,223,1630792,Malcolm,Hill,Malcolm Hill
+224,224,1642396,Blake,Hinson,Blake Hinson
+225,225,1630207,Nate,Hinton,Nate Hinton
+226,226,1628988,Aaron,Holiday,Aaron Holiday
+227,227,201950,Jrue,Holiday,Jrue Holiday
+228,228,1641842,Ronald,Holland II,Ronald Holland II
+229,229,1626158,Richaun,Holmes,Richaun Holmes
+230,230,1641747,DaRon,Holmes II,DaRon Holmes II
+231,231,1631096,Chet,Holmgren,Chet Holmgren
+232,232,1641720,Jalen,Hood-Schifino,Jalen Hood-Schifino
+233,233,201143,Al,Horford,Al Horford
+234,234,1629659,Talen,Horton-Tucker,Talen Horton-Tucker
+235,235,1631216,Caleb,Houstan,Caleb Houstan
+236,236,1641724,Jett,Howard,Jett Howard
+237,237,1628989,Kevin,Huerter,Kevin Huerter
+238,238,1630643,Jay,Huff,Jay Huff
+239,239,1630574,Ariel,Hukporti,Ariel Hukporti
+240,240,1629631,De'Andre,Hunter,De'Andre Hunter
+241,241,1630538,Bones,Hyland,Bones Hyland
+242,242,1642345,Oso,Ighodaro,Oso Ighodaro
+243,243,204060,Joe,Ingles,Joe Ingles
+244,244,1627742,Brandon,Ingram,Brandon Ingram
+245,245,1631127,Harrison,Ingram,Harrison Ingram
+246,246,202681,Kyrie,Irving,Kyrie Irving
+247,247,1628371,Jonathan,Isaac,Jonathan Isaac
+248,248,1631093,Jaden,Ivey,Jaden Ivey
+249,249,1641713,GG,Jackson,GG Jackson
+250,250,1630543,Isaiah,Jackson,Isaiah Jackson
+251,251,1631245,Quenton,Jackson,Quenton Jackson
+252,252,202704,Reggie,Jackson,Reggie Jackson
+253,253,1641748,Andre,Jackson Jr.,Andre Jackson Jr.
+254,254,1628991,Jaren,Jackson Jr.,Jaren Jackson Jr.
+255,255,1631218,Trayce,Jackson-Davis,Trayce Jackson-Davis
+256,256,1642355,Bronny,James,Bronny James
+257,257,2544,LeBron,James,LeBron James
+258,258,1631170,Jaime,Jaquez Jr.,Jaime Jaquez Jr.
+259,259,1629610,DaQuan,Jeffries,DaQuan Jeffries
+260,260,1641998,Trey,Jemison,Trey Jemison
+261,261,1642450,Daniss,Jenkins,Daniss Jenkins
+262,262,1629660,Ty,Jerome,Ty Jerome
+263,263,1630198,Isaiah,Joe,Isaiah Joe
+264,264,1642358,AJ,Johnson,AJ Johnson
+265,265,1629661,Cameron,Johnson,Cameron Johnson
+266,266,1630552,Jalen,Johnson,Jalen Johnson
+267,267,201949,James,Johnson,James Johnson
+268,268,1629640,Keldon,Johnson,Keldon Johnson
+269,269,1630553,Keon,Johnson,Keon Johnson
+270,270,1642352,Keshad,Johnson,Keshad Johnson
+271,271,1641749,Keyontae,Johnson,Keyontae Johnson
+272,272,203999,Nikola,Jokić,Nikola Jokić
+273,273,1641732,Colby,Jones,Colby Jones
+274,274,1641794,Dillon,Jones,Dillon Jones
+275,275,1630529,Herbert,Jones,Herbert Jones
+276,276,1642403,Isaac,Jones,Isaac Jones
+277,277,1630539,Kai,Jones,Kai Jones
+278,278,1630222,Mason,Jones,Mason Jones
+279,279,1642461,Spencer,Jones,Spencer Jones
+280,280,1630200,Tre,Jones,Tre Jones
+281,281,1626145,Tyus,Jones,Tyus Jones
+282,282,1627884,Derrick,Jones Jr.,Derrick Jones Jr.
+283,283,201599,DeAndre,Jordan,DeAndre Jordan
+284,284,202709,Cory,Joseph,Cory Joseph
+285,285,1631107,Nikola,Jović,Nikola Jović
+286,286,1630548,Johnny,Juzang,Johnny Juzang
+287,287,1626163,Frank,Kaminsky,Frank Kaminsky
+288,288,1642530,Yuki,Kawamura,Yuki Kawamura
+289,289,1630283,Kylor,Kelley,Kylor Kelley
+290,290,1628379,Luke,Kennard,Luke Kennard
+291,291,1631117,Walker,Kessler,Walker Kessler
+292,292,1630557,Corey,Kispert,Corey Kispert
+293,293,1628467,Maxi,Kleber,Maxi Kleber
+294,294,1641752,Bobi,Klintman,Bobi Klintman
+295,295,1642261,Dalton,Knecht,Dalton Knecht
+296,296,1628995,Kevin,Knox II,Kevin Knox II
+297,297,1642278,Tyler,Kolek,Tyler Kolek
+298,298,1631132,Christian,Koloko,Christian Koloko
+299,299,1629723,John,Konchar,John Konchar
+300,300,1642046,Miller,Kopp,Miller Kopp
+301,301,1628436,Luke,Kornet,Luke Kornet
+302,302,1630249,Vít,Krejčí,Vít Krejčí
+303,303,1630228,Jonathan,Kuminga,Jonathan Kuminga
+304,304,1628398,Kyle,Kuzma,Kyle Kuzma
+305,305,1631222,Jake,LaRavia,Jake LaRavia
+306,306,203897,Zach,LaVine,Zach LaVine
+307,307,1627746,Skal,Labissiere,Skal Labissiere
+308,308,1629111,Jock,Landale,Jock Landale
+309,309,1641796,Pelle,Larsson,Pelle Larsson
+310,310,1627747,Caris,LeVert,Caris LeVert
+311,311,1627814,Damion,Lee,Damion Lee
+312,312,203458,Alex,Len,Alex Len
+313,313,202695,Kawhi,Leonard,Kawhi Leonard
+314,314,1642502,Malevy,Leons,Malevy Leons
+315,315,1641721,Maxwell,Lewis,Maxwell Lewis
+316,316,1630184,Kira,Lewis Jr.,Kira Lewis Jr.
+317,317,1630604,E.J.,Liddell,E.J. Liddell
+318,318,203081,Damian,Lillard,Damian Lillard
+319,319,1629642,Nassir,Little,Nassir Little
+320,320,1641726,Dereck,Lively II,Dereck Lively II
+321,321,1641753,Chris,Livingston,Chris Livingston
+322,322,1631254,Kenneth,Lofton Jr.,Kenneth Lofton Jr.
+323,323,1626172,Kevon,Looney,Kevon Looney
+324,324,201572,Brook,Lopez,Brook Lopez
+325,325,201567,Kevin,Love,Kevin Love
+326,326,200768,Kyle,Lowry,Kyle Lowry
+327,327,1641754,Seth,Lundy,Seth Lundy
+328,328,1626168,Trey,Lyles,Trey Lyles
+329,329,1627748,Thon,Maker,Thon Maker
+330,330,1630572,Sandro,Mamukelashvili,Sandro Mamukelashvili
+331,331,1629611,Terance,Mann,Terance Mann
+332,332,1630544,Tre,Mann,Tre Mann
+333,333,1628374,Lauri,Markkanen,Lauri Markkanen
+334,334,1630230,Naji,Marshall,Naji Marshall
+335,335,1628997,Caleb,Martin,Caleb Martin
+336,336,1628998,Cody,Martin,Cody Martin
+337,337,1641798,Jaylen,Martin,Jaylen Martin
+338,338,1630231,KJ,Martin,KJ Martin
+339,339,1631213,Tyrese,Martin,Tyrese Martin
+340,340,1629726,Garrison,Mathews,Garrison Mathews
+341,341,1631097,Bennedict,Mathurin,Bennedict Mathurin
+342,342,1631255,Karlo,Matković,Karlo Matković
+343,343,1630178,Tyrese,Maxey,Tyrese Maxey
+344,344,1630219,Skylar,Mays,Skylar Mays
+345,345,1630540,Miles,McBride,Miles McBride
+346,346,1642272,Jared,McCain,Jared McCain
+347,347,1630644,Mac,McClung,Mac McClung
+348,348,203468,CJ,McCollum,CJ McCollum
+349,349,204456,T.J.,McConnell,T.J. McConnell
+350,350,1631322,Javante,McCoy,Javante McCoy
+351,351,1641755,Kevin,McCullar Jr.,Kevin McCullar Jr.
+352,352,1630183,Jaden,McDaniels,Jaden McDaniels
+353,353,1629667,Jalen,McDaniels,Jalen McDaniels
+354,354,1631121,Bryce,McGowens,Bryce McGowens
+355,355,1629162,Jordan,McLaughlin,Jordan McLaughlin
+356,356,1629098,Jack,McVeigh,Jack McVeigh
+357,357,1629001,De'Anthony,Melton,De'Anthony Melton
+358,358,1641877,Nathan,Mensah,Nathan Mensah
+359,359,1630241,Sam,Merrill,Sam Merrill
+360,360,203995,Vasilije,Micić,Vasilije Micić
+361,361,203114,Khris,Middleton,Khris Middleton
+362,362,1641706,Brandon,Miller,Brandon Miller
+363,363,1641801,Emanuel,Miller,Emanuel Miller
+364,364,1641757,Jordan,Miller,Jordan Miller
+365,365,1631159,Leonard,Miller,Leonard Miller
+366,366,201988,Patty,Mills,Patty Mills
+367,367,1629003,Shake,Milton,Shake Milton
+368,368,1631303,Justin,Minaya,Justin Minaya
+369,369,1642434,Riley,Minix,Riley Minix
+370,370,1631169,Josh,Minott,Josh Minott
+371,371,1641758,Judah,Mintz,Judah Mintz
+372,372,1642274,Yves,Missi,Yves Missi
+373,373,1642349,Ajay,Mitchell,Ajay Mitchell
+374,374,1630558,Davion,Mitchell,Davion Mitchell
+375,375,1628378,Donovan,Mitchell,Donovan Mitchell
+376,376,1630596,Evan,Mobley,Evan Mobley
+377,377,1630600,Isaiah,Mobley,Isaiah Mobley
+378,378,1642367,Jonathan,Mogbo,Jonathan Mogbo
+379,379,1628370,Malik,Monk,Malik Monk
+380,380,1630541,Moses,Moody,Moses Moody
+381,381,1631386,Tazé,Moore,Tazé Moore
+382,382,1631111,Wendell,Moore Jr.,Wendell Moore Jr.
+383,383,1629630,Ja,Morant,Ja Morant
+384,384,202693,Markieff,Morris,Markieff Morris
+385,385,1628420,Monté,Morris,Monté Morris
+386,386,1630530,Trey,Murphy III,Trey Murphy III
+387,387,1627749,Dejounte,Murray,Dejounte Murray
+388,388,1627750,Jamal,Murray,Jamal Murray
+389,389,1631099,Keegan,Murray,Keegan Murray
+390,390,1631200,Kris,Murray,Kris Murray
+391,391,1629004,Svi,Mykhailiuk,Svi Mykhailiuk
+392,392,1631250,Pete,Nance,Pete Nance
+393,393,1626204,Larry,Nance Jr.,Larry Nance Jr.
+394,394,1629614,Andrew,Nembhard,Andrew Nembhard
+395,395,1630174,Aaron,Nesmith,Aaron Nesmith
+396,396,1641803,Tristen,Newton,Tristen Newton
+397,397,1627777,Georges,Niang,Georges Niang
+398,398,1630227,Daishen,Nix,Daishen Nix
+399,399,1630192,Zeke,Nnaji,Zeke Nnaji
+400,400,1629669,Jaylen,Nowell,Jaylen Nowell
+401,401,1641806,Markquis,Nowell,Markquis Nowell
+402,402,203994,Jusuf,Nurkić,Jusuf Nurkić
+403,403,1626220,Royce,O'Neale,Royce O'Neale
+404,404,1629643,Chuma,Okeke,Chuma Okeke
+405,405,1629006,Josh,Okogie,Josh Okogie
+406,406,1630168,Onyeka,Okongwu,Onyeka Okongwu
+407,407,1630171,Isaac,Okoro,Isaac Okoro
+408,408,1642439,Quincy,Olivari,Quincy Olivari
+409,409,203482,Kelly,Olynyk,Kelly Olynyk
+410,410,1630647,Eugene,Omoruyi,Eugene Omoruyi
+411,411,1629671,Miye,Oni,Miye Oni
+412,412,1626162,Kelly,Oubre Jr.,Kelly Oubre Jr.
+413,413,1628394,Anžejs,Pasečņiks,Anžejs Pasečņiks
+414,414,101108,Chris,Paul,Chris Paul
+415,415,1626166,Cameron,Payne,Cameron Payne
+416,416,1627780,Gary,Payton II,Gary Payton II
+417,417,1641970,Mãozinha,Pereira,Mãozinha Pereira
+418,418,1641809,Drew,Peterson,Drew Peterson
+419,419,1641763,Julian,Phillips,Julian Phillips
+420,420,1629618,Jalen,Pickett,Jalen Pickett
+421,421,1630590,Scotty,Pippen Jr.,Scotty Pippen Jr.
+422,422,1631342,Daeqwon,Plowden,Daeqwon Plowden
+423,423,203486,Mason,Plumlee,Mason Plumlee
+424,424,1641764,Brandin,Podziemski,Brandin Podziemski
+425,425,1629673,Jordan,Poole,Jordan Poole
+426,426,1641854,Craig,Porter Jr.,Craig Porter Jr.
+427,427,1629645,Kevin,Porter Jr.,Kevin Porter Jr.
+428,428,1629008,Michael,Porter Jr.,Michael Porter Jr.
+429,429,1626171,Bobby,Portis,Bobby Portis
+430,430,204001,Kristaps,Porziņģis,Kristaps Porziņģis
+431,431,1642366,Quinten,Post,Quinten Post
+432,432,1630695,Micah,Potter,Micah Potter
+433,433,203939,Dwight,Powell,Dwight Powell
+434,434,1626181,Norman,Powell,Norman Powell
+435,435,1630554,Jason,Preston,Jason Preston
+436,436,1627752,Taurean,Prince,Taurean Prince
+437,437,1630202,Payton,Pritchard,Payton Pritchard
+438,438,1641765,Olivier-Maxence,Prosper,Olivier-Maxence Prosper
+439,439,1642389,Zyon,Pullin,Zyon Pullin
+440,440,1627751,Jakob,Pöltl,Jakob Pöltl
+441,441,1630243,Trevelin,Queen,Trevelin Queen
+442,442,1629674,Neemias,Queta,Neemias Queta
+443,443,1630193,Immanuel,Quickley,Immanuel Quickley
+444,444,1631311,Lester,Quinones,Lester Quinones
+445,445,1630186,Jahmi'us,Ramsey,Jahmi'us Ramsey
+446,446,203944,Julius,Randle,Julius Randle
+447,447,1641871,Duop,Reath,Duop Reath
+448,448,1630559,Austin,Reaves,Austin Reaves
+449,449,1629629,Cam,Reddish,Cam Reddish
+450,450,1630194,Paul,Reed,Paul Reed
+451,451,1642024,Alex,Reese,Alex Reese
+452,452,1641810,Antonio,Reeves,Antonio Reeves
+453,453,1629675,Naz,Reid,Naz Reid
+454,454,1631197,Jared,Rhoden,Jared Rhoden
+455,455,1630208,Nick,Richards,Nick Richards
+456,456,1626196,Josh,Richardson,Josh Richardson
+457,457,1642019,Will,Richardson,Will Richardson
+458,458,1642258,Zaccharie,Risacher,Zaccharie Risacher
+459,459,1641857,Liam,Robbins,Liam Robbins
+460,460,1629130,Duncan,Robinson,Duncan Robinson
+461,461,1629011,Mitchell,Robinson,Mitchell Robinson
+462,462,1631115,Orlando,Robinson,Orlando Robinson
+463,463,1630526,Jeremiah,Robinson-Earl,Jeremiah Robinson-Earl
+464,464,1631223,David,Roddy,David Roddy
+465,465,1631157,Ryan,Rollins,Ryan Rollins
+466,466,1642050,Jackson,Rowe,Jackson Rowe
+467,467,1626179,Terry,Rozier,Terry Rozier
+468,468,1641712,Rayan,Rupert,Rayan Rupert
+469,469,1626156,D'Angelo,Russell,D'Angelo Russell
+470,470,1642504,Cormac,Ryan,Cormac Ryan
+471,471,1630346,Matt,Ryan,Matt Ryan
+472,472,1627734,Domantas,Sabonis,Domantas Sabonis
+473,473,1642275,Tidjane,Salaün,Tidjane Salaün
+474,474,1631257,Jermaine,Samuels Jr.,Jermaine Samuels Jr.
+475,475,1641766,Adama,Sanogo,Adama Sanogo
+476,476,1630611,Gui,Santos,Gui Santos
+477,477,1642259,Alexandre,Sarr,Alexandre Sarr
+478,478,1631204,Marcus,Sasser,Marcus Sasser
+479,479,1631248,Baylor,Scheierman,Baylor Scheierman
+480,480,203471,Dennis,Schröder,Dennis Schröder
+481,481,1630206,Jay,Scrubb,Jay Scrubb
+482,482,1631220,Dereon,Seabron,Dereon Seabron
+483,483,1630578,Alperen,Sengun,Alperen Sengun
+484,484,1641729,Brice,Sensabaugh,Brice Sensabaugh
+485,485,1629012,Collin,Sexton,Collin Sexton
+486,486,1629013,Landry,Shamet,Landry Shamet
+487,487,1630545,Terrence,Shannon Jr.,Terrence Shannon Jr.
+488,488,1642481,Jamarion,Sharp,Jamarion Sharp
+489,489,1630549,Day'Ron,Sharpe,Day'Ron Sharpe
+490,490,1631101,Shaedon,Sharpe,Shaedon Sharpe
+491,491,1642347,Jamal,Shead,Jamal Shead
+492,492,1641767,Ben,Sheppard,Ben Sheppard
+493,493,1642263,Reed,Sheppard,Reed Sheppard
+494,494,1627783,Pascal,Siakam,Pascal Siakam
+495,495,1627732,Ben,Simmons,Ben Simmons
+496,496,1629014,Anfernee,Simons,Anfernee Simons
+497,497,1642354,K.J.,Simpson,K.J. Simpson
+498,498,1630579,Jericho,Sims,Jericho Sims
+499,499,1631376,Dmytro,Skapintsev,Dmytro Skapintsev
+500,500,1641771,Jalen,Slawson,Jalen Slawson
+501,501,1630606,Javonte,Smart,Javonte Smart
+502,502,203935,Marcus,Smart,Marcus Smart
+503,503,1630696,Dru,Smith,Dru Smith
+504,504,1630188,Jalen,Smith,Jalen Smith
+505,505,1642449,Tolu,Smith,Tolu Smith
+506,506,1641890,Tyler,Smith,Tyler Smith
+507,507,1629015,Zhaire,Smith,Zhaire Smith
+508,508,1631095,Jabari,Smith Jr.,Jabari Smith Jr.
+509,509,1641733,Nick,Smith Jr.,Nick Smith Jr.
+510,510,1631110,Jeremy,Sochan,Jeremy Sochan
+511,511,1642285,Cam,Spencer,Cam Spencer
+512,512,1630311,Pat,Spencer,Pat Spencer
+513,513,1630531,Jaden,Springer,Jaden Springer
+514,514,1641815,Isaiah,Stevens,Isaiah Stevens
+515,515,1630205,Lamar,Stevens,Lamar Stevens
+516,516,1641907,Erik,Stevenson,Erik Stevenson
+517,517,1630569,DJ,Steward,DJ Steward
+518,518,1630191,Isaiah,Stewart,Isaiah Stewart
+519,519,1631124,Julian,Strawther,Julian Strawther
+520,520,1629622,Max,Strus,Max Strus
+521,521,1630591,Jalen,Suggs,Jalen Suggs
+522,522,1631306,Cole,Swider,Cole Swider
+523,523,1630256,Jae'Sean,Tate,Jae'Sean Tate
+524,524,1628369,Jayson,Tatum,Jayson Tatum
+525,525,1630678,Terry,Taylor,Terry Taylor
+526,526,202066,Garrett,Temple,Garrett Temple
+527,527,1631207,Dalen,Terry,Dalen Terry
+528,528,1628464,Daniel,Theis,Daniel Theis
+529,529,1630271,Brodric,Thomas,Brodric Thomas
+530,530,1630560,Cam,Thomas,Cam Thomas
+531,531,1641708,Amen,Thompson,Amen Thompson
+532,532,1641709,Ausar,Thompson,Ausar Thompson
+533,533,1630679,Ethan,Thompson,Ethan Thompson
+534,534,202691,Klay,Thompson,Klay Thompson
+535,535,202684,Tristan,Thompson,Tristan Thompson
+536,536,1630550,JT,Thor,JT Thor
+537,537,1629680,Matisse,Thybulle,Matisse Thybulle
+538,538,1630214,Xavier,Tillman,Xavier Tillman
+539,539,1642260,Nikola,Topić,Nikola Topić
+540,540,1631210,Jacob,Toppin,Jacob Toppin
+541,541,1630167,Obi,Toppin,Obi Toppin
+542,542,1626157,Karl-Anthony,Towns,Karl-Anthony Towns
+543,543,1642422,Armel,Traoré,Armel Traoré
+544,544,1631247,Luke,Travers,Luke Travers
+545,545,1629018,Gary,Trent Jr.,Gary Trent Jr.
+546,546,1631131,Oscar,Tshiebwe,Oscar Tshiebwe
+547,547,1630733,Jordan,Tucker,Jordan Tucker
+548,548,200782,P.J.,Tucker,P.J. Tucker
+549,549,1626167,Myles,Turner,Myles Turner
+550,550,1641816,Hunter,Tyson,Hunter Tyson
+551,551,1642281,Jaylon,Tyson,Jaylon Tyson
+552,552,1630649,Stanley,Umude,Stanley Umude
+553,553,202685,Jonas,Valančiūnas,Jonas Valančiūnas
+554,554,1627832,Fred,VanVleet,Fred VanVleet
+555,555,1629020,Jarred,Vanderbilt,Jarred Vanderbilt
+556,556,1630170,Devin,Vassell,Devin Vassell
+557,557,1629216,Gabe,Vincent,Gabe Vincent
+558,558,1641774,Tristan,Vukcevic,Tristan Vukcevic
+559,559,202696,Nikola,Vučević,Nikola Vučević
+560,560,1629731,Dean,Wade,Dean Wade
+561,561,1630532,Franz,Wagner,Franz Wagner
+562,562,1629021,Moritz,Wagner,Moritz Wagner
+563,563,1631133,Jabari,Walker,Jabari Walker
+564,564,1641716,Jarace,Walker,Jarace Walker
+565,565,1629022,Lonnie,Walker IV,Lonnie Walker IV
+566,566,1641717,Cason,Wallace,Cason Wallace
+567,567,1630811,Keaton,Wallace,Keaton Wallace
+568,568,1641775,Jordan,Walsh,Jordan Walsh
+569,569,1642266,Ja'Kobe,Walter,Ja'Kobe Walter
+570,570,1642276,Kel'el,Ware,Kel'el Ware
+571,571,203933,T.J.,Warren,T.J. Warren
+572,572,1629023,P.J.,Washington,P.J. Washington
+573,573,1631102,TyTy,Washington Jr.,TyTy Washington Jr.
+574,574,1630322,Lindy,Waters III,Lindy Waters III
+575,575,1630570,Trendon,Watford,Trendon Watford
+576,576,1641817,Anton,Watson,Anton Watson
+577,577,1631212,Peyton,Watson,Peyton Watson
+578,578,1642377,Jaylen,Wells,Jaylen Wells
+579,579,1641705,Victor,Wembanyama,Victor Wembanyama
+580,580,1631104,Blake,Wesley,Blake Wesley
+581,581,201566,Russell,Westbrook,Russell Westbrook
+582,582,1629632,Coby,White,Coby White
+583,583,1628401,Derrick,White,Derrick White
+584,584,1641727,Dariq,Whitehead,Dariq Whitehead
+585,585,1641715,Cam,Whitmore,Cam Whitmore
+586,586,1630598,Aaron,Wiggins,Aaron Wiggins
+587,587,203952,Andrew,Wiggins,Andrew Wiggins
+588,588,1631214,Alondes,Williams,Alondes Williams
+589,589,1630314,Brandon,Williams,Brandon Williams
+590,590,1642262,Cody,Williams,Cody Williams
+591,591,1629684,Grant,Williams,Grant Williams
+592,592,1631114,Jalen,Williams,Jalen Williams
+593,593,1631119,Jaylin,Williams,Jaylin Williams
+594,594,1629026,Kenrich,Williams,Kenrich Williams
+595,595,1631109,Mark,Williams,Mark Williams
+596,596,1631466,Nate,Williams,Nate Williams
+597,597,1630172,Patrick,Williams,Patrick Williams
+598,598,1630533,Ziaire,Williams,Ziaire Williams
+599,599,1629057,Robert,Williams III,Robert Williams III
+600,600,1631246,Vince,Williams Jr.,Vince Williams Jr.
+601,601,1629627,Zion,Williamson,Zion Williamson
+602,602,1630592,Jalen,Wilson,Jalen Wilson
+603,603,1630164,James,Wiseman,James Wiseman
+604,604,1626174,Christian,Wood,Christian Wood
+605,605,1642473,Moses,Wood,Moses Wood
+606,606,1626153,Delon,Wright,Delon Wright
+607,607,1627824,Guerschon,Yabusele,Guerschon Yabusele
+608,608,1642385,Cui,Yongxi,Cui Yongxi
+609,609,1629027,Trae,Young,Trae Young
+610,610,203469,Cody,Zeller,Cody Zeller
+611,611,1627826,Ivica,Zubac,Ivica Zubac
+612,612,1641783,Tristan,da Silva,Tristan da Silva
+613,613,1628427,Vlatko,Čančar,Vlatko Čančar
+614,614,203967,Dario,Šarić,Dario Šarić
