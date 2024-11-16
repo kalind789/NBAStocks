@@ -5,8 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NBA Stock Exchange - Home</title>
+
     <!-- Include Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Include Chartist CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chartist@0.11.4/dist/chartist.min.css">
+
     <!-- Include Custom CSS -->
     <link href="{{ url_for('static', filename='home.css') }}" rel="stylesheet">
 </head>
@@ -22,20 +27,20 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="containerr">
         <h2 class="text-center">Top Performers</h2>
 
         <!-- Chart Container -->
-        <div class="ct-chart ct-perfect-fourth mt-5"></div>
+        <div class="ct-chart ct-golden-section mt-5"></div>
     </div>
 
-    <!-- Include jQuery (full version) and Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Include jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <!-- Include Chartist JS -->
-    <script src="https://cdn.jsdelivr.net/npm/chartist/dist/chartist.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartist@0.11.4/dist/chartist.min.js"></script>
 
     <script>
         class MyCharts {
@@ -49,15 +54,33 @@
                     labels: this.xData,
                     series: [this.yData]
                 };
-                // No options needed here as per your request
-                new Chartist.Line('.ct-chart', data);
+
+                const options = {
+                    fullWidth: true,
+
+                    showPoint: true,
+                    lineSmooth: true,
+
+                    chartPadding: {
+                        right: 40
+                    },
+                    axisX: {
+                        showGrid: true,
+                        showLabel: true
+                    },
+                    axisY: {
+                        offset: 60
+                    }
+                };
+
+                new Chartist.Line('.ct-chart', data, options);
             }
         }
 
         const XData = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
 
         // Fetch temperature data from the server
-        $.get('/temperature', function (resp) {
+        $.getJSON('/temperature', function (resp) {
             console.log("JSON DATA", resp.temperature);
             const obj = new MyCharts(XData, resp.temperature);
             obj.createGraph();
