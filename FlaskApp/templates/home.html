@@ -44,23 +44,21 @@
 
     <script>
         class MyCharts {
-            constructor(xData, yData) {
+            constructor(xData, yDataArray) {
                 this.xData = xData;
-                this.yData = yData;
+                this.yDataArray = yDataArray; // Expecting an array of arrays
             }
 
             createGraph() {
                 const data = {
                     labels: this.xData,
-                    series: [this.yData]
+                    series: this.yDataArray // This can contain multiple datasets (lines)
                 };
 
                 const options = {
                     fullWidth: true,
-
                     showPoint: true,
                     lineSmooth: true,
-
                     chartPadding: {
                         right: 40
                     },
@@ -70,7 +68,7 @@
                     },
                     axisY: {
                         offset: 60
-                    }
+                    },
                 };
 
                 new Chartist.Line('.ct-chart', data, options);
@@ -79,13 +77,26 @@
 
         const XData = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
 
-        // Fetch temperature data from the server
-        $.getJSON('/temperature', function (resp) {
-            console.log("JSON DATA", resp.temperature);
-            const obj = new MyCharts(XData, resp.temperature);
+        // Fetch both datasets from the server
+        $.when(
+            $.getJSON('/temperature'),      // Fetch temperature data
+            $.getJSON('/secondTemperature') // Fetch second temperature data
+        ).done(function (temperatureResp, secondTempResp) {
+            console.log("Temperature Data:", temperatureResp[0].temperature);
+            console.log("Second Temperature Data:", secondTempResp[0].temperature);
+
+            // Array containing both datasets (lines)
+            const dataArray = [
+                temperatureResp[0].temperature, // First line
+                secondTempResp[0].temperature  // Second line
+            ];
+
+            const obj = new MyCharts(XData, dataArray);
             obj.createGraph();
         });
     </script>
+
+
 </body>
 
 </html>

@@ -137,6 +137,17 @@ def temperature():
     }
     return jsonify(data)
 
+
+@app.route('/secondTemperature', methods=["GET", "POST"])
+def secondTemperature():
+    temperature = []
+    for i in range(1, 10):
+        temperature.append(random.randint(0, 100))
+    data = {
+        "temperature": temperature
+    }
+    return jsonify(data)
+
 @app.route('/update_player_stocks')
 @login_required  # Optional if you want to restrict access
 def update_player_stocks():
