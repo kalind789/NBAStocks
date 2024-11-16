@@ -1,0 +1,12 @@
+/* Specific styles for home page */
+.home-title {
+    font-size: 3rem;
+    color: #222;
+    margin-bottom: 15px;
+}
+
+.home-description {
+    font-size: 1.25rem;
+    color: #666;
+    margin-bottom: 25px;
+}
