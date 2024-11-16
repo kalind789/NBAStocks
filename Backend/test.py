@@ -4,6 +4,9 @@ from app import app
 from models import db, User, PortfolioEntry, PlayerStock
 
 with app.app_context():
+    db.drop_all()  #clear database
+    db.create_all() #create tables
+
     ##CREATE DATA
     # Create a PlayerStock
     stock = PlayerStock(player_first_name="LeBron", player_last_name="James", value=100.0)
@@ -24,12 +27,12 @@ with app.app_context():
     # Get a user's portfolio
     user = User.query.first()
     for entry in user.portfolio:
-        stock = PlayerStock.query.get(entry.player_stock_id)
+        stock = db.session.get(PlayerStock, entry.player_stock_id)
         print(f"{user.username} owns {entry.shares} shares of {stock.player_first_name} {stock.player_last_name}")
 
     # Get all users who own shares in a particular stock
     stock = PlayerStock.query.first()
     portfolio_entries = PortfolioEntry.query.filter_by(player_stock_id=stock.id).all()
     for entry in portfolio_entries:
-        user = User.query.get(entry.user_id)
+        user = db.session.get(User, entry.user_id)
         print(f"{user.username} owns {entry.shares} shares of {stock.player_first_name} {stock.player_last_name}")
