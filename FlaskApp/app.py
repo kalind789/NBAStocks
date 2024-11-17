@@ -8,6 +8,7 @@ from flask_migrate import Migrate
 from werkzeug.security import generate_password_hash, check_password_hash
 import pandas as pd
 from apscheduler.schedulers.background import BackgroundScheduler
+from random import uniform
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
@@ -228,6 +229,23 @@ def update_player_stock_route(player_id):
         return jsonify({'status': 'error', 'message': str(e)}), 500
 
 
+@app.route('/get_price_history/<int:player_id>', methods=['GET'])
+def get_price_history(player_id):
+    """Dynamically generate the last 5 prices for a given player."""
+    try:
+        # Check if the player exists
+        player = PlayerStock.query.filter_by(player_id=player_id).first()
+        if not player:
+            return jsonify({'status': 'error', 'message': 'Player not found'}), 404
+
+        # Generate mock price history
+        base_price = player.value
+        prices = [round(base_price + i * uniform(-5, 5), 2) for i in range(5)]
+
+        return jsonify({'status': 'success', 'player_id': player_id, 'prices': prices}), 200
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+    
 @app.route('/add-portfolio-entry', methods=['POST'])
 @login_required
 def add_portfolio_entry():

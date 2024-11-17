@@ -17,6 +17,7 @@
 
     <!-- Chartist CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chartist/dist/chartist.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chartist-plugin-legend/chartist-plugin-legend.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='portfolio.css') }}">
@@ -50,11 +51,60 @@
     <section class="portfolio-section py-5">
         <div class="container">
             <h1 class="text-center text-warning mb-5">Your Portfolio</h1>
-            <div id="portfolioResults" class="table-responsive"></div>
-            <div id="chartContainer" class="mt-5">
-                <h3 class="text-center text-warning">Last 5 Game Prices</h3>
-                <div class="ct-chart"></div>
+            <div id="portfolioResults" class="table-responsive"></div> <!-- Table goes here -->
+            <div id="chartContainer" class="d-flex mt-5">
+                <!-- Player Names (Legend) -->
+                <div id="legendContainer" class="legend-container">
+                    <ul id="legendList"></ul>
+                </div>
+            
+                <!-- Chart -->
+                <div id="portfolioChart" class="ct-chart ct-golden-section"></div>
             </div>
+            
+            <style>
+                #chartContainer {
+                    display: flex;
+                    align-items: center;
+                    /* Align items vertically */
+                    justify-content: center;
+                    /* Ensure the chart is centered */
+                    gap: 20px;
+                    /* Space between the legend and the chart */
+                }
+            
+                .legend-container {
+                    min-width: 150px;
+                    /* Adjust width as needed */
+                    padding-right: 10px;
+                    /* Space between names and chart */
+                    text-align: left;
+                }
+            
+                .legend-container ul {
+                    list-style-type: none;
+                    padding: 0;
+                }
+            
+                .legend-container li {
+                    font-size: 16px;
+                    margin-bottom: 8px;
+                    display: flex;
+                    align-items: center;
+                }
+            
+                .legend-container li::before {
+                    content: '';
+                    display: inline-block;
+                    width: 12px;
+                    height: 12px;
+                    margin-right: 8px;
+                    border-radius: 50%;
+                    /* Makes the indicator a circle */
+                }
+            </style>
+
+
         </div>
     </section>
 
@@ -76,6 +126,7 @@
 
     <!-- Chartist JS -->
     <script src="https://cdn.jsdelivr.net/npm/chartist/dist/chartist.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartist-plugin-legend/chartist-plugin-legend.min.js"></script>
 
     <!-- Custom JS -->
     <script src="{{ url_for('static', filename='portfolio.js') }}"></script>

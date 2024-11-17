@@ -3,7 +3,15 @@ function viewPortfolio() {
         .then(response => response.json())
         .then(data => {
             const portfolioContainer = document.getElementById('portfolioResults');
-            portfolioContainer.innerHTML = ''; // Clear existing content
+            const chartContainer = document.getElementById('portfolioChart');
+
+            if (!portfolioContainer || !chartContainer) {
+                console.error('Portfolio or Chart container not found in the DOM.');
+                return;
+            }
+
+            portfolioContainer.innerHTML = ''; // Clear the table
+            chartContainer.innerHTML = ''; // Clear the chart
 
             if (data.length > 0) {
                 const table = document.createElement('table');
@@ -23,109 +31,120 @@ function viewPortfolio() {
                 table.appendChild(thead);
 
                 const tbody = document.createElement('tbody');
+                const playersForChart = data.slice(0, 5); // Limit to 5 players for chart
+                const chartData = { labels: ['Game 1', 'Game 2', 'Game 3', 'Game 4', 'Game 5'], series: [] };
+                const playerNames = [];
+                const playerColors = ['#FF5733', '#33FF57', '#3357FF', '#FF33A6', '#FFC733'];
 
                 data.forEach(entry => {
                     const row = document.createElement('tr');
-                    row.setAttribute('data-player-id', entry.player_id);
-
                     row.innerHTML = `
                         <td>${entry.player_name}</td>
                         <td>${entry.shares}</td>
-                        <td>$<span id="value-${entry.player_id}">${entry.value.toFixed(2)}</span></td>
-                        <td>$<span id="total-${entry.player_id}">${entry.total_value.toFixed(2)}</span></td>
+                        <td>$${entry.value.toFixed(2)}</td>
+                        <td>$${(entry.value * entry.shares).toFixed(2)}</td>
                         <td id="fantasy-${entry.player_id}">Loading...</td>
                     `;
                     tbody.appendChild(row);
 
-                    // Fetch fantasy points and update the stock price for this player
+                    // Fetch fantasy points for table
                     fetch(`/get_fantasy_points/${entry.player_id}`)
                         .then(response => response.json())
                         .then(playerData => {
                             if (playerData.status === 'success') {
-                                const fantasyPoints = playerData.fantasy_points;
-
-                                // Update fantasy points in the table
-                                document.getElementById(`fantasy-${entry.player_id}`).textContent = fantasyPoints.toFixed(2);
-
-                                // Update player stock price
-                                fetch(`/update-player-stock/${entry.player_id}`, { method: 'POST' })
-                                    .then(() => {
-                                        // Re-fetch portfolio data to get the updated value
-                                        fetch(`/portfolio-data`)
-                                            .then(response => response.json())
-                                            .then(updatedData => {
-                                                const updatedPlayer = updatedData.find(p => p.player_id === entry.player_id);
-                                                if (updatedPlayer) {
-                                                    document.getElementById(`value-${entry.player_id}`).textContent = updatedPlayer.value.toFixed(2);
-                                                    document.getElementById(`total-${entry.player_id}`).textContent = (updatedPlayer.value * entry.shares).toFixed(2);
-                                                }
-                                            });
-                                    })
-                                    .catch(error => console.error(`Error updating stock for player ${entry.player_id}:`, error));
+                                document.getElementById(`fantasy-${entry.player_id}`).textContent = playerData.fantasy_points.toFixed(2);
                             } else {
                                 document.getElementById(`fantasy-${entry.player_id}`).textContent = 'N/A';
                             }
-                        })
-                        .catch(error => {
-                            console.error(`Error fetching fantasy points for player ID ${entry.player_id}:`, error);
-                            document.getElementById(`fantasy-${entry.player_id}`).textContent = 'Error';
                         });
+
+                    // Fetch price history for chart
+                    if (playersForChart.includes(entry)) {
+                        fetch(`/get_price_history/${entry.player_id}`)
+                            .then(response => response.json())
+                            .then(priceData => {
+                                if (priceData.status === 'success') {
+                                    chartData.series.push(priceData.prices);
+                                    playerNames.push(entry.player_name);
+
+                                    // Render chart when all player data is fetched
+                                    if (chartData.series.length === playersForChart.length) {
+                                        loadChart(chartData, playerNames, playerColors);
+                                    }
+                                }
+                            });
+                    }
                 });
 
                 table.appendChild(tbody);
                 portfolioContainer.appendChild(table);
-
-                // Render Chartist.js chart for the first five players
-                loadChart(data.slice(0, 5));
             } else {
                 portfolioContainer.textContent = 'Your portfolio is empty.';
             }
         })
         .catch(error => {
             console.error('Error fetching portfolio:', error);
-            document.getElementById('portfolioResults').textContent = 'Failed to load portfolio.';
+            const portfolioContainer = document.getElementById('portfolioResults');
+            portfolioContainer.textContent = 'Failed to load portfolio.';
         });
 }
 
-function loadChart(players) {
-    const chartContainer = document.querySelector('.ct-chart');
-    const labels = ['Game 1', 'Game 2', 'Game 3', 'Game 4', 'Game 5']; // Labels for the games
-    const series = []; // Series for the chart
+function loadChart(chartData, playerNames) {
+    const chartContainer = document.getElementById('portfolioChart');
+    const legendContainer = document.getElementById('legendList');
 
-    let completedRequests = 0;
+    if (!chartContainer || !legendContainer) {
+        console.error('Chart or legend container not found in the DOM.');
+        return;
+    }
 
-    players.forEach(player => {
-        fetch(`/get_fantasy_points/${player.player_id}`)
-            .then(response => response.json())
-            .then(playerData => {
-                if (playerData.status === 'success') {
-                    // Extract last 5 game prices (ensure it's an array)
-                    const last5Prices = Object.values(playerData.average_stats || {}).slice(0, 5);
-                    
-                    // Push the last 5 prices into the series array
-                    series.push(last5Prices);
+    // Clear the chart and legend containers
+    chartContainer.innerHTML = '';
+    legendContainer.innerHTML = '';
 
-                    completedRequests++;
-                    if (completedRequests === players.length) {
-                        // All player data loaded, render the chart
-                        new Chartist.Line(chartContainer, {
-                            labels: labels,
-                            series: series
-                        }, {
-                            low: 0,
-                            showArea: true,
-                            fullWidth: true,
-                            chartPadding: {
-                                right: 40
-                            }
-                        });
-                    }
-                }
-            })
-            .catch(error => console.error(`Error fetching chart data for player ID ${player.player_id}:`, error));
+    // Define a color palette for the lines (and matching legend items)
+    const colors = ['#FF0000', '#FFA500', '#FFD700', '#008000', '#0000FF']; // Red, Orange, Gold, Green, Blue
+
+    // Add player names and corresponding colors to the legend
+    playerNames.forEach((name, index) => {
+        const listItem = document.createElement('li');
+        listItem.textContent = name;
+        listItem.style.color = colors[index % colors.length]; // Cycle through the color palette
+        listItem.style.fontWeight = 'bold';
+
+        // Add a colored circle next to the player's name
+        listItem.style.display = 'flex';
+        listItem.style.alignItems = 'center';
+        const circle = document.createElement('span');
+        circle.style.backgroundColor = colors[index % colors.length];
+        circle.style.width = '12px';
+        circle.style.height = '12px';
+        circle.style.borderRadius = '50%';
+        circle.style.marginRight = '8px';
+        listItem.prepend(circle);
+
+        legendContainer.appendChild(listItem);
+    });
+
+    // Render the chart using Chartist
+    new Chartist.Line('#portfolioChart', chartData, {
+        low: 0,
+        high: Math.max(...chartData.series.flat()) + 10,
+        showPoint: true,
+        lineSmooth: Chartist.Interpolation.simple(),
+        axisY: {
+            offset: 40,
+            labelInterpolationFnc: value => `$${value.toFixed(2)}`
+        },
+        lineColors: colors, // Assign the colors to the chart lines
+    });
+
+    // Add the colors explicitly to each series
+    document.querySelectorAll('.ct-series').forEach((series, index) => {
+        series.style.stroke = colors[index % colors.length];
     });
 }
 
 
-// Automatically load the portfolio and chart when the page loads
+
 document.addEventListener('DOMContentLoaded', viewPortfolio);
