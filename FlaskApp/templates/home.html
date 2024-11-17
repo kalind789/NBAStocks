@@ -32,6 +32,10 @@
 
         <!-- Chart Container -->
         <div class="ct-chart ct-golden-section mt-5"></div>
+
+        <!-- Hover Card -->
+        <div id="hoverCard"></div>
+
     </div>
 
     <!-- Include jQuery and Bootstrap JS -->
@@ -46,32 +50,51 @@
         class MyCharts {
             constructor(xData, yDataArray) {
                 this.xData = xData;
-                this.yDataArray = yDataArray; // Expecting an array of arrays
+                this.yDataArray = yDataArray;
             }
 
             createGraph() {
                 const data = {
                     labels: this.xData,
-                    series: this.yDataArray // This can contain multiple datasets (lines)
+                    series: this.yDataArray
                 };
 
                 const options = {
                     fullWidth: true,
                     showPoint: true,
                     lineSmooth: true,
-                    chartPadding: {
-                        right: 40
-                    },
-                    axisX: {
-                        showGrid: true,
-                        showLabel: true
-                    },
-                    axisY: {
-                        offset: 60
-                    },
+                    chartPadding: { right: 40 },
+                    axisX: { showGrid: true, showLabel: true },
+                    axisY: { offset: 60 }
                 };
 
-                new Chartist.Line('.ct-chart', data, options);
+                const chart = new Chartist.Line('.ct-chart', data, options);
+
+                chart.on('draw', (data) => {
+                    if (data.type === 'point') {
+                        // Ensure 'this' refers to the class instance
+                        data.element._node.addEventListener('mouseover', (event) => {
+                            this.showCard(event, data.value.y, data.index);
+                        });
+
+                        data.element._node.addEventListener('mouseout', () => {
+                            this.hideCard();
+                        });
+                    }
+                });
+            }
+
+            showCard(event, value, index) {
+                const card = document.getElementById('hoverCard');
+                card.innerHTML = `Value: ${value}<br>Day: ${this.xData[index]}`;
+                card.style.top = `${event.pageY - 40}px`;
+                card.style.left = `${event.pageX + 10}px`;
+                card.classList.add('show');
+            }
+
+            hideCard() {
+                const card = document.getElementById('hoverCard');
+                card.classList.remove('show');
             }
         }
 
@@ -79,22 +102,22 @@
 
         // Fetch both datasets from the server
         $.when(
-            $.getJSON('/temperature'),      // Fetch temperature data
-            $.getJSON('/secondTemperature') // Fetch second temperature data
+            $.getJSON('/temperature'),
+            $.getJSON('/secondTemperature')
         ).done(function (temperatureResp, secondTempResp) {
             console.log("Temperature Data:", temperatureResp[0].temperature);
             console.log("Second Temperature Data:", secondTempResp[0].temperature);
 
-            
             const dataArray = [
-                temperatureResp[0].temperature, // First line
-                secondTempResp[0].temperature  // Second line
+                temperatureResp[0].temperature,
+                secondTempResp[0].temperature
             ];
 
             const obj = new MyCharts(XData, dataArray);
             obj.createGraph();
         });
     </script>
+
 
 
 </body>
