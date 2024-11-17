@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from flask import Flask, render_template, redirect, url_for, request, flash, json, jsonify
+from flask import Flask, render_template, redirect, url_for, request, flash, json, jsonify, Response
 from flask_cors import CORS
 from data_collection import calculate_fantasy_points, fetch_player_data  # Import Flask-Cors
 from models import db, User  # Assuming models.py contains the User model with username, email, and password fields
@@ -8,6 +8,7 @@ from flask_migrate import Migrate
 from werkzeug.security import generate_password_hash, check_password_hash
 import random
 import pandas as pd
+from models import PlayerStock
 
 from apscheduler.schedulers.background import BackgroundScheduler
 from data_collection import update_player_stock
@@ -198,13 +199,53 @@ def get_fantasy_points_route(player_id):
     }), 200
 
 @app.route('/update_player_stocks')
-@login_required  # Optional if you want to restrict access
+@login_required  
 def update_player_stocks():
-    player_ids = [1630173, 203500, 1628389]  # Example IDs
+    player_ids = [1630173, 203500, 1628389]  
     for player_id in player_ids:
         update_player_stock(player_id)
     flash('Player stocks updated successfully!', 'success')
     return redirect(url_for('index'))
+
+'''
+@app.route('/search-players', methods=['GET'])
+def read_players():
+    query = request.args.get('query')  # Get the query parameter from the URL
+    if query:
+        
+        results = PlayerStock.query.filter(
+            PlayerStock.player_first_name.contains(query)
+        ).all()
+
+        
+        return jsonify([{
+            'full_name': f"{item.player_first_name} {item.player_last_name}",
+            'value': item.value
+        } for item in results])
+    return jsonify([])
+'''
+
+
+@app.route('/search')
+def search_page():
+    return render_template('read_players.html')
+
+@app.route('/search-players', methods=['GET'])
+def search_players():
+    query = request.args.get('query')
+    if query:
+        # Search for players by first name or last name
+        results = PlayerStock.query.filter(
+            PlayerStock.player_first_name.ilike(f'%{query}%') |
+            PlayerStock.player_last_name.ilike(f'%{query}%')
+        ).all()
+
+        # Return player names as JSON response
+        if results:
+            return jsonify([f'{player.player_first_name} {player.player_last_name}' for player in results])
+        else:
+            return jsonify([])  # If no results, return empty list
+    return jsonify([])  # If no query, return empty list
 
 
 if __name__ == "__main__":

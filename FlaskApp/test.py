@@ -13,7 +13,7 @@ with app.app_context():
     db.session.commit()
 
     # Create a User
-    user = User(username="kavni", email="kavni@u.rochester.edu", password_hash="hashed_password")
+    user = User(username="kavni", email="kavni@u.rochester.edu", password="hashed_password")
     db.session.add(user)
     db.session.commit()
 
@@ -31,7 +31,9 @@ with app.app_context():
 
     # Get all users who own shares in a particular stock
     stock = PlayerStock.query.first()
+    #all the user id's from portfolio entry table that own a specfic stock
     portfolio_entries = PortfolioEntry.query.filter_by(player_stock_id=stock.id).all()
     for entry in portfolio_entries:
+        #then we get the specific user 
         user = db.session.get(User, entry.user_id)
         print(f"{user.username} owns {entry.shares} shares of {stock.player_first_name} {stock.player_last_name}")

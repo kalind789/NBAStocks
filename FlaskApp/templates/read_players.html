@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Players</title>
+</head>
+
+<body>
+    <h1>Search Players</h1>
+    <form id="searchForm" onsubmit="searchPlayers(event)">
+        <input type="text" id="searchInput" placeholder="Enter player name" required>
+        <button type="submit">Search</button>
+    </form>
+
+    <ul id="results"></ul> <!-- List where search results will be shown -->
+
+    <script>
+        // Handle the form submission
+        function searchPlayers(event) {
+            event.preventDefault(); // Prevent form from submitting normally
+
+            const query = document.getElementById('searchInput').value; // Get input value
+
+            // Send GET request to Flask backend
+            fetch(`/search-players?query=${query}`)
+                .then(response => response.json()) // Parse the JSON response
+                .then(data => {
+                    const resultsContainer = document.getElementById('results');
+                    resultsContainer.innerHTML = ''; // Clear previous results
+
+                    // Display the results
+                    if (data.length > 0) {
+                        data.forEach(player => {
+                            const listItem = document.createElement('li');
+                            listItem.textContent = `Player: ${player}`; // Show player name (can add more details if needed)
+                            resultsContainer.appendChild(listItem);
+                        });
+                    } else {
+                        resultsContainer.innerHTML = 'No players found.';
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+
+</html>
