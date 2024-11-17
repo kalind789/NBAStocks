@@ -406,7 +406,7 @@ def add_portfolio_entry():
 @app.route('/player-data', methods=['GET'])
 def player_data():
     """
-    Flask route to fetch player stats for the last 5 games.
+    Flask route to fetch player stats and fantasy points for the last 5 games.
     """
     player_id = request.args.get('player_id')
 

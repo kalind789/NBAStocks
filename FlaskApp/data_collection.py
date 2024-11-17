@@ -6,7 +6,7 @@ from models import PlayerStock, db
 
 
 def fetch_player_data(player_id, last_n_games=5):
-    """Fetch player data from the NBA API for the last `n` games."""
+    """Fetch player data from the NBA API for the last `n` games and calculate fantasy points."""
     try:
         # Fetch the player's game logs
         gamelog = playergamelog.PlayerGameLog(player_id=str(player_id))
@@ -22,14 +22,25 @@ def fetch_player_data(player_id, last_n_games=5):
             stats_list = []
 
             for _, game in last_games.iterrows():
-                stats_list.append({
-                    # Ensure the date is JSON serializable
-                    'GAME_DATE': str(game['GAME_DATE']),
+                stats = {
                     'PTS': int(game['PTS']),
                     'AST': int(game['AST']),
                     'REB': int(game['REB']),
                     'BLK': int(game['BLK']),
                     'STL': int(game['STL'])
+                }
+                # Calculate fantasy points
+                fantasy_points = calculate_fantasy_points(stats)
+
+                stats_list.append({
+                    # Ensure the date is JSON serializable
+                    'GAME_DATE': str(game['GAME_DATE']),
+                    'PTS': stats['PTS'],
+                    'AST': stats['AST'],
+                    'REB': stats['REB'],
+                    'BLK': stats['BLK'],
+                    'STL': stats['STL'],
+                    'fantasy_points': fantasy_points  # Include fantasy points
                 })
 
             return stats_list
@@ -39,7 +50,6 @@ def fetch_player_data(player_id, last_n_games=5):
     except Exception as e:
         print(f"Error fetching data for player {player_id}: {e}")
         return None
-
 
 
 def calculate_fantasy_points(stats) -> int:
