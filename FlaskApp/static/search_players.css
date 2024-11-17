@@ -1,0 +1,130 @@
+/* static/search_players.css */
+
+/* General Styles */
+body {
+    background: linear-gradient(135deg, #0d0d0d, #1a1a1a, #262626, #0d0d0d);
+    background-size: 400% 400%;
+    animation: gradientAnimation 12s ease infinite;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Navigation Bar */
+.navbar {
+    background: linear-gradient(135deg, #343a40, #212529);
+    padding: 20px;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 2rem;
+    color: #f0ad4e !important;
+}
+
+.navbar-nav .nav-link {
+    color: #e0e0e0;
+    font-size: 1.1rem;
+}
+
+.navbar-nav .nav-link.active {
+    color: #f0ad4e;
+}
+
+/* Search Section */
+.search-section {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 60px 0;
+}
+
+.search-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 2px #000;
+}
+
+.form-control {
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+    border: 1px solid #333;
+    border-radius: 8px;
+}
+
+.form-control:focus {
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+    border-color: #f0ad4e;
+    box-shadow: none;
+}
+
+.player-card {
+    background: linear-gradient(135deg, #343a40, #212529);
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.player-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+}
+
+.player-name {
+    color: #f0ad4e;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px #000;
+}
+
+.btn-warning {
+    background-color: #f0ad4e;
+    border: none;
+    color: #1b1b1b;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-warning:hover {
+    background-color: #d48806;
+    transform: translateY(-3px);
+}
+
+.btn-warning:focus {
+    background-color: #d48806;
+    box-shadow: none;
+}
+
+/* Footer */
+footer {
+    background: #1b1b1b;
+    padding: 40px 0;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1rem;
+    color: #e0e0e0;
+}
+
+footer .social-icons {
+    margin-top: 15px;
+}
+
+footer .social-icons a {
+    color: #e0e0e0;
+    margin: 0 10px;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+footer .social-icons a:hover {
+    color: #f0ad4e;
+}
