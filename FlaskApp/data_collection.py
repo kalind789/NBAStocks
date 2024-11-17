@@ -5,8 +5,8 @@ import random
 from models import PlayerStock, db
 
 
-def fetch_player_data(player_id, date=None):
-    """Fetch player data from the NBA API for a specific date."""
+def fetch_player_data(player_id, last_n_games=5):
+    """Fetch player data from the NBA API for the last `n` games."""
     try:
         # Fetch the player's game logs
         gamelog = playergamelog.PlayerGameLog(player_id=str(player_id))
@@ -15,37 +15,31 @@ def fetch_player_data(player_id, date=None):
         print("Columns in gamelog_df:", gamelog_df.columns)
         print("First few rows of gamelog_df:\n", gamelog_df.head())
 
-        if date:
-            # Convert 'GAME_DATE' to datetime objects for accurate comparison
-            gamelog_df['GAME_DATE'] = pd.to_datetime(gamelog_df['GAME_DATE'])
-            date_obj = pd.to_datetime(date)
-            # Filter the DataFrame for the specific date
-            game_stats = gamelog_df[gamelog_df['GAME_DATE'] == date_obj]
-        else:
-            # Use the most recent game if no date is provided
-            game_stats = gamelog_df.iloc[:1]
+        # Filter the last `n` games
+        last_games = gamelog_df.head(last_n_games)
 
-        print("game_stats:\n", game_stats)
+        if not last_games.empty:
+            stats_list = []
 
-        if not game_stats.empty:
-            stats = game_stats.iloc[0]
-            print("stats:\n", stats)
-            print("Type of stats:", type(stats))
-            return {
-                'PTS': stats['PTS'],
-                'AST': stats['AST'],
-                'REB': stats['REB'],
-                'BLK': stats['BLK'],
-                'STL': stats['STL']
-            }
+            for _, game in last_games.iterrows():
+                stats_list.append({
+                    # Ensure the date is JSON serializable
+                    'GAME_DATE': str(game['GAME_DATE']),
+                    'PTS': int(game['PTS']),
+                    'AST': int(game['AST']),
+                    'REB': int(game['REB']),
+                    'BLK': int(game['BLK']),
+                    'STL': int(game['STL'])
+                })
+
+            return stats_list
         else:
-            print(
-                f"No game stats available for player {player_id} on date {date}.")
+            print(f"No recent games found for player {player_id}.")
             return None
     except Exception as e:
-        print(
-            f"Error fetching data for player {player_id} on date {date}: {e}")
+        print(f"Error fetching data for player {player_id}: {e}")
         return None
+
 
 
 def calculate_fantasy_points(stats) -> int:

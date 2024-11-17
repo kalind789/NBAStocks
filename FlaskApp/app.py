@@ -2,7 +2,6 @@ from datetime import datetime, timedelta
 from flask import Flask, render_template, redirect, url_for, request, flash, json, jsonify, Response
 from flask_cors import CORS
 from data_collection import calculate_fantasy_points, fetch_player_data  
-
 from models import db, User, PortfolioEntry
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from flask_migrate import Migrate
@@ -319,9 +318,11 @@ def portfolio_data():
     data = []
 
     for entry in entries:
+        # Retrieve the PlayerStock object using player_stock_id
         player = PlayerStock.query.get(entry.player_stock_id)
         if player:
             data.append({
+                'player_id': player.id,  # Include player ID
                 'player_name': f"{player.player_first_name} {player.player_last_name}",
                 'shares': entry.shares,
                 'value': player.value,
@@ -329,6 +330,7 @@ def portfolio_data():
             })
 
     return jsonify(data)
+
 
 
 
@@ -400,6 +402,43 @@ def add_portfolio_entry():
         db.session.rollback()
         return jsonify({'status': 'error', 'message': 'Failed to add portfolio entry.'}), 500
     
+
+@app.route('/player-data', methods=['GET'])
+def player_data():
+    """
+    Flask route to fetch player stats for the last 5 games.
+    """
+    player_id = request.args.get('player_id')
+
+    if not player_id:
+        return jsonify({
+            'status': 'error',
+            'message': 'Player ID is required'
+        }), 400
+
+    try:
+        # Fetch stats for the last 5 games
+        player_stats = fetch_player_data(player_id, last_n_games=5)
+
+        if player_stats:
+            return jsonify({
+                'status': 'success',
+                'player_id': player_id,
+                'stats': player_stats
+            }), 200
+        else:
+            return jsonify({
+                'status': 'error',
+                'message': f'No stats available for player ID {player_id}'
+            }), 404
+
+    except Exception as e:
+        return jsonify({
+            'status': 'error',
+            'message': f'An error occurred: {str(e)}'
+        }), 500
+
+
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()

@@ -13,10 +13,10 @@ with app.app_context():
     with open('static/players.csv', 'r') as file:
         for line in file:
             string = str(line)
-       
-            arr = string.split(',')
 
-            players.append((arr[3],arr[4]))
+            arr = string.split(',')
+            print(arr)
+            players.append((arr[4],arr[5]))
     
     for i in range(len(players)):
         stock = PlayerStock(player_first_name=players[i][0],

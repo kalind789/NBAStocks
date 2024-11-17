@@ -5,37 +5,65 @@ function viewPortfolio() {
         .then(response => response.json())
         .then(data => {
             const portfolioContainer = document.getElementById('portfolioResults');
-            portfolioContainer.innerHTML = '';
+            portfolioContainer.innerHTML = ''; // Clear existing content
 
             if (data.length > 0) {
                 const table = document.createElement('table');
-                table.className = 'table table-dark table-striped table-bordered';
-                const thead = table.createTHead();
-                const headerRow = thead.insertRow();
-                headerRow.innerHTML = `
-                    <th>Player Name</th>
-                    <th>Shares</th>
-                    <th>Current Value</th>
-                    <th>Total Value</th>
+                table.classList.add('table', 'table-striped', 'table-bordered');
+
+                // Create table header
+                const thead = document.createElement('thead');
+                thead.innerHTML = `
+                    <tr>
+                        <th>Player Name</th>
+                        <th>Shares</th>
+                        <th>Current Value</th>
+                        <th>Total Value</th>
+                    </tr>
                 `;
-                const tbody = table.createTBody();
+                table.appendChild(thead);
+
+                const tbody = document.createElement('tbody');
 
                 data.forEach(entry => {
-                    const row = tbody.insertRow();
+                    const row = document.createElement('tr');
+                    // Store player_id in a data attribute without displaying it
+                    row.setAttribute('data-player-id', entry.player_id);
+
                     row.innerHTML = `
                         <td>${entry.player_name}</td>
                         <td>${entry.shares}</td>
                         <td>$${entry.value.toFixed(2)}</td>
                         <td>$${entry.total_value.toFixed(2)}</td>
                     `;
+
+                    tbody.appendChild(row);
+
+                    // Fetch additional player data using player_id
+                    fetch(`/player-data?player_id=${entry.player_id}`)
+                        .then(response => response.json())
+                        .then(playerData => {
+                            console.log(`Data for player ID ${entry.player_id}:`, playerData);
+                            // You can process playerData as needed here
+                            // For example, store it in the row's data attributes
+                            row.setAttribute('data-player-stats', JSON.stringify(playerData));
+                        })
+                        .catch(error => {
+                            console.error(`Error fetching data for player ID ${entry.player_id}:`, error);
+                        });
                 });
+
+                table.appendChild(tbody);
                 portfolioContainer.appendChild(table);
             } else {
-                portfolioContainer.innerHTML = '<p class="text-center text-light">Your portfolio is empty.</p>';
+                portfolioContainer.textContent = 'Your portfolio is empty.';
             }
         })
-        .catch(error => console.error('Error:', error));
+        .catch(error => {
+            console.error('Error fetching portfolio:', error);
+            document.getElementById('portfolioResults').textContent = 'Failed to load portfolio.';
+        });
 }
 
 // Automatically load the portfolio when the page loads
-window.onload = viewPortfolio;
+document.addEventListener('DOMContentLoaded', viewPortfolio);
