@@ -1,110 +1,120 @@
-/* General body styling */
 body {
-    font-family: 'Arial', sans-serif;
+    background: #1b1b1b;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', sans-serif;
     margin: 0;
-    padding: 0;
-    background: linear-gradient(90deg, #1d428a, #c8102e); /* NBA colors gradient */
-    color: #ffffff;
+    overflow-x: hidden;
 }
 
-/* Navbar Styling */
 .navbar {
-    background-color: #1e1e1e; /* Darker background for better contrast */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.navbar-brand, .nav-link {
-    color: #ffffff !important;
-}
-
-.nav-link:hover {
-    color: #d4d4d4 !important;
-}
-
-/* Jumbotron Styling */
-.nba-jumbotron {
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark background for better readability */
-    color: #ffffff;
-    margin-bottom: 2rem;
-    padding: 4rem 2rem;
-}
-
-.nba-jumbotron .display-4 {
+.navbar-brand {
     font-weight: bold;
-    color: #ffdd00; /* Highlight color */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Add shadow for better readability */
+    font-size: 1.8rem;
 }
 
-.nba-jumbotron p {
-    font-size: 1.2rem;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Text shadow */
+.navbar-nav .nav-link {
+    color: #e0e0e0;
+    padding: 8px 12px;
+    transition: color 0.3s ease, background-color 0.3s ease;
 }
 
-/* Container and Main Content Styling */
-.container {
-    margin-top: 2rem;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.9); /* Lightened background for readability */
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    color: #333; /* Darker text for contrast */
-}
-
-h2 {
-    color: #2e3b4e; /* Slightly darker color */
-}
-
-/* Chart Styling */
-.ct-chart {
-    margin: 20px auto;
-    max-width: 1000px; /* Increased max width */
-    height: 600px; /* Increased height */
-    background: rgba(240, 240, 240, 0.8); /* Lightened background for the chart */
-    border-radius: 8px;
-    padding: 20px;
-}
-
-.ct-series-a .ct-line {
-    stroke: #ff4500; /* Highlight color */
-    stroke-width: 5px; /* Thicker line */
-}
-
-.ct-series-a .ct-point {
-    stroke: #ff4500;
-    stroke-width: 10px; /* Larger points */
-}
-
-.ct-grid {
-    stroke: rgba(0, 0, 0, 0.1); /* Grid lines for better readability */
-}
-
-/* Buttons Styling */
-.btn {
+.navbar-nav .nav-link:hover {
+    color: #f0ad4e;
+    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 5px;
 }
 
-.btn-primary {
-    background-color: #ffdd00;
-    border-color: #ffdd00;
-    color: #333;
+.hero-section {
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
 }
 
-.btn-primary:hover {
-    background-color: #cba300;
-    border-color: #cba300;
+.hero-content {
+    z-index: 2;
 }
 
-/* Media Queries */
-@media (max-width: 768px) {
-    .nba-jumbotron {
-        padding: 2rem;
-    }
+.hero-section:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
 
-    .container {
-        padding: 10px;
-    }
+.hero-section h1, .hero-section p {
+    z-index: 2;
+}
 
-    .ct-chart {
-        width: 100%;
-        height: 400px;
+.hero-section .btn {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.hero-section .btn:hover {
+    background-color: #f0ad4e;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.ct-chart {
+    height: 350px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+    background: #1b1b1b;
+    color: #ffffff;
+    padding: 10px 0;
+}
+
+/* Animations */
+.animate-fade-in {
+    animation: fadeIn 2s ease-in;
+}
+
+.animate-bounce {
+    animation: bounce 2s infinite;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
     }
 }

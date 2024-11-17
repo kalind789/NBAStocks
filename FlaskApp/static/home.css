@@ -1,97 +1,59 @@
 body {
-    background: url('../images/basketball-court.jpg') no-repeat center center fixed;
-    background-size: cover;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f8;
+}
+
+.hero-section h1 {
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-section p {
+    font-size: 1.25rem;
+}
+
+.btn-warning {
+    background-color: #ffb703;
+    border: none;
+    padding: 12px 24px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn-warning:hover {
+    background-color: #e09b03;
+}
+
+.btn-outline-light {
+    border: 2px solid #ffffff;
+    padding: 12px 24px;
+    font-weight: bold;
+    border-radius: 5px;
     color: white;
-    font-family: 'Arial', sans-serif;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-h1 {
-    font-family: 'Impact', sans-serif;
-    font-size: 3rem;
-    color: #FF4500;
-    /* Basketball orange */
-    text-shadow: 2px 2px #000;
+.btn-outline-light:hover {
+    background-color: #ffffff;
+    color: #1e3a8a;
 }
 
-p {
-    font-size: 1.2rem;
-}
-
-.btn-primary {
-    background-color: #FF4500;
-    /* Basketball orange */
-    border: none;
-    transition: background-color 0.3s;
-}
-
-.btn-primary:hover {
-    background-color: #E03C00;
-}
-
-.btn-secondary {
-    background-color: #1E1E1E;
-    color: #FF4500;
-    border: none;
-    transition: background-color 0.3s;
-}
-
-.btn-secondary:hover {
-    background-color: #333333;
-}
-
-.container {
-    background: rgba(0, 0, 0, 0.7);
-    padding: 2rem;
+.chart-container {
+    margin-top: 40px;
+    padding: 20px;
     border-radius: 10px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Adjusted Chartist.js styles */
-
-.ct-series-a .ct-line {
-    stroke: green;
-    stroke-width: 3px;
-    /* Reduced stroke width */
-    /* Removed or adjusted stroke-dasharray */
-    /* stroke-dasharray: 5px 5px; */
-}
-
-.ct-series-a .ct-point {
-    stroke: green;
-    stroke-width: 8px;
-    /* Reduced stroke width */
-    stroke-linecap: round;
-    /* Changed from 'circle' to 'round' */
-}
-
-.ct-series-b .ct-line {
-    stroke: blue;
-    stroke-width: 3px;
-    /* Reduced stroke width */
-    /* Removed or adjusted stroke-dasharray */
-    /* stroke-dasharray: 3px 3px; */
-}
-
-.ct-series-b .ct-point {
-    stroke: blue;
-    stroke-width: 8px;
-    /* Reduced stroke width */
-    stroke-linecap: round;
-    /* Changed from 'circle' to 'round' */
-}
-
-/* Style for the hover card */
-#hoverCard {
-    position: absolute;
-    background-color: rgba(0, 0, 0);
-    color: white;
-    padding: 10px;
+.chart-wrapper {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8);
     border-radius: 8px;
-    display: none;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
 }
 
-#hoverCard.show {
-    display: block;
-    transition: opacity 0.2s ease;
+footer {
+    font-size: 0.9rem;
 }

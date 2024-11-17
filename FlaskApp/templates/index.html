@@ -4,94 +4,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NBA Stock Exchange</title>
+    <title>NBA Stock Exchange - Dashboard</title>
 
-    <!-- Chartist CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Chartist CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chartist@0.11.4/dist/chartist.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <link href="{{ url_for('static', filename='index.css') }}" rel="stylesheet">
 </head>
 
-<body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">NBA Stocks</a>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="/market" class="nav-link">Market</a></li>
-                {% if current_user.is_authenticated %}
-                    <li class="nav-item"><a href="{{ url_for('logout') }}" class="nav-link">Logout</a></li>
-                {% else %}
-                    <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
-                {% endif %}
-            </ul>
+<body class="bg-dark text-light">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg">
+        <div class="container">
+            <a class="navbar-brand text-warning font-weight-bold" href="/">NBA Stock Exchange</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a href="/index" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="/market" class="nav-link">Market</a></li>
+                    {% if current_user.is_authenticated %}
+                        <li class="nav-item"><a href="{{ url_for('logout') }}" class="btn btn-outline-warning btn-sm ml-2">Logout</a></li>
+                    {% endif %}
+                </ul>
+            </div>
         </div>
     </nav>
-    
-    <div class="container">
-        <h2 class="text-center">Top Performers</h2>
-        <p class="text-center">This is a simple HTML page rendered by Flask.</p>
-    
-        <!-- Chart Container -->
-        <div class="ct-chart ct-perfect-fourth mt-5"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section d-flex align-items-center justify-content-center text-center text-light" style="background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.3)), url('https://source.unsplash.com/featured/?basketball'); background-size: cover; background-attachment: fixed; height: 80vh;">
+        <div class="container hero-content">
+            <h1 class="display-3 text-warning font-weight-bold animate-fade-in">Welcome to NBA Stock Exchange</h1>
+            <p class="lead animate-fade-in">Trade stocks based on real-time NBA player performances. Ready to make your move?</p>
+            <a href="/market" class="btn btn-lg btn-warning mt-3 animate-bounce">Explore the Market</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container mt-5 text-center">
+        <h2 class="mb-4 text-warning">Top Performers</h2>
+        <div class="ct-chart ct-golden-section mt-3"></div>
     </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p class="mb-0">&copy; 2024 NBA Stock Exchange. All Rights Reserved.</p>
+    </footer>
 
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!-- Popper.js -->
+    <!-- Popper.js and Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
-    <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
     <!-- Chartist JS -->
-    <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartist@0.11.4/dist/chartist.min.js"></script>
 
-    <!-- Chart Script -->
-    <script>
-        class MyCharts {
-            constructor(xData, yData, width, height) {
-                this.xData = xData;
-                this.yData = yData;
-                this.width = width;
-                this.height = height;
-            }
-            createGraph() {
-                const data = {
-                    labels: this.xData,
-                    series: [this.yData]
-                };
-                const options = {
-                    width: this.width,
-                    height: this.height,
-                    axisX: {
-                        showGrid: true,
-                        showLabel: true
-                    },
-                    axisY: {
-                        offset: 60
-                    }
-                };
-                new Chartist.Line('.ct-chart', data, options);
-            }
-        }
-
-        $(document).ready(function() {
-            const XData = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
-            // Fetch temperature data from the server
-            $.get('/temperature', function(resp) {
-                if (resp && resp.temperature) {
-                    const chart = new MyCharts(XData, resp.temperature, '500px', '500px');
-                    chart.createGraph();
-                } else {
-                    console.error("No temperature data received");
-                }
-            }).fail(function() {
-                console.error("Error fetching temperature data");
-            });
-        });
-    </script>
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
 </body>
 
 </html>
