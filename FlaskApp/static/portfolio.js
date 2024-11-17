@@ -17,7 +17,7 @@ function viewPortfolio() {
                         <th>Shares</th>
                         <th>Current Value</th>
                         <th>Total Value</th>
-                        <th>Fantasy Points (Last 5 Games)</th>
+                        <th>Fantasy Points (Last 5 Games Average)</th>
                     </tr>
                 `;
                 table.appendChild(thead);
@@ -38,13 +38,13 @@ function viewPortfolio() {
 
                     tbody.appendChild(row);
 
-                    // Fetch additional player data using player_id
-                    fetch(`/player-data?player_id=${entry.player_id}`)
+                    // Fetch fantasy points for each player
+                    fetch(`/get_fantasy_points/${entry.player_id}`)
                         .then(response => response.json())
                         .then(playerData => {
                             if (playerData.status === 'success') {
-                                const fantasyPoints = playerData.stats.reduce((sum, game) => sum + game.fantasy_points, 0);
-                                row.cells[4].textContent = fantasyPoints; // Update the "Fantasy Points" cell
+                                const fantasyPoints = playerData.fantasy_points;
+                                row.cells[4].textContent = fantasyPoints.toFixed(2); // Update the "Fantasy Points" cell
                             } else {
                                 row.cells[4].textContent = 'N/A'; // Handle missing data
                             }

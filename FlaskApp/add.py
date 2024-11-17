@@ -11,22 +11,28 @@ with app.app_context():
 
     # Load and process player data from the CSV file
     players_df = pd.read_csv('static/players.csv')
+    with open('static/players.csv', 'r') as file:
+        for line in file:
+            string = str(line)
 
+            arr = string.split(',')
+            
+            players.append((arr[5], arr[6],arr[4]))
     # Iterate through DataFrame rows and create PlayerStock entries
-    for index, row in players_df.iterrows():
-        first_name = row['first_name'] if 'first_name' in row else None
-        last_name = row['last_name'] if 'last_name' in row else None
-        player_id = row['id'] if 'id' in row else None  # Add player_id if present in CSV
 
-        if first_name and last_name and player_id:
+        for i in range(len(players)):
+            stock = PlayerStock(player_first_name=players[i][0],
+                            player_last_name=players[i][1], value=100.0, player_id=players[i][2])
+            print(stock)
+            '''
             stock = PlayerStock(
                 player_first_name=first_name,
                 player_last_name=last_name,
                 value=100.0,
                 player_id=player_id  # Assuming you have added player_id to PlayerStock model
             )
+            '''
             db.session.add(stock)
-
     db.session.commit()
 
     # Create a new column 'picture_link' in the DataFrame using player IDs

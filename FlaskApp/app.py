@@ -174,14 +174,38 @@ def search_players():
 
     players_data = [
         {
-            "full_name": f"{player.player_first_name} {player.player_last_name}",
-            "player_id": player.player_id,
-            "fantasy_points": player.value
+            'full_name': f"{player.player_first_name} {player.player_last_name}",
+            'player_id': player.player_id,
+            'fantasy_points': player.value  # Or calculate based on your logic
         }
         for player in players
     ]
 
-    return jsonify(players_data), 200
+    return jsonify(players_data)
+
+
+@app.route('/get_fantasy_points/<int:player_id>', methods=['GET'])
+def get_fantasy_points_route(player_id):
+    """Fetch and calculate the average fantasy points for the last 5 games of a specific player."""
+    # Verify if player exists in PlayerStock
+    player = PlayerStock.query.filter_by(player_id=player_id).first()
+    if not player:
+        return jsonify({'status': 'error', 'message': f'Player ID {player_id} not found'}), 404
+
+    # Fetch stats for the last 5 games
+    stats = fetch_player_data(player_id, last_n_games=5)
+    if stats:
+        fantasy_points = calculate_fantasy_points(stats)
+        return jsonify({
+            'status': 'success',
+            'player_id': player_id,
+            'player_name': f"{player.player_first_name} {player.player_last_name}",
+            'average_stats': stats,
+            'fantasy_points': fantasy_points
+        }), 200
+    else:
+        return jsonify({'status': 'error', 'message': 'No game data available for this player.'}), 404
+
 
 
 @app.route('/add-portfolio-entry', methods=['POST'])

@@ -2,33 +2,45 @@ from nba_api.stats.endpoints import playercareerstats, playergamelog
 import random
 from models import PlayerStock, db
 
+
 def fetch_player_data(player_id, last_n_games=5):
-    """Fetch player data from the NBA API for the last `n` games and calculate fantasy points."""
+    """Fetch player data for the last `n` games and return aggregated stats."""
     try:
         # Fetch the player's game logs
         gamelog = playergamelog.PlayerGameLog(player_id=str(player_id))
         gamelog_df = gamelog.get_data_frames()[0]
 
-        # Filter the last `n` games
+        # Get the last `n` games
         last_games = gamelog_df.head(last_n_games)
 
         if not last_games.empty:
-            stats_list = []
+            total_stats = {
+                'PTS': 0,
+                'AST': 0,
+                'REB': 0,
+                'BLK': 0,
+                'STL': 0
+            }
+            games_count = 0
+
             for _, game in last_games.iterrows():
-                stats = {
-                    'PTS': int(game['PTS']),
-                    'AST': int(game['AST']),
-                    'REB': int(game['REB']),
-                    'BLK': int(game['BLK']),
-                    'STL': int(game['STL'])
-                }
-                stats_list.append(stats)
-            return stats_list
+                total_stats['PTS'] += int(game['PTS'])
+                total_stats['AST'] += int(game['AST'])
+                total_stats['REB'] += int(game['REB'])
+                total_stats['BLK'] += int(game['BLK'])
+                total_stats['STL'] += int(game['STL'])
+                games_count += 1
+
+            # Average out the stats
+            avg_stats = {key: total / games_count for key,
+                         total in total_stats.items()}
+            return avg_stats
         else:
             return None
     except Exception as e:
         print(f"Error fetching data for player {player_id}: {e}")
         return None
+
 
 def calculate_fantasy_points(stats):
     """Calculate fantasy points using a custom formula."""
