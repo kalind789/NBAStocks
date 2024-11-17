@@ -10,8 +10,8 @@ function viewPortfolio() {
                 return;
             }
 
-            portfolioContainer.innerHTML = ''; // Clear the table
-            chartContainer.innerHTML = ''; // Clear the chart
+            portfolioContainer.innerHTML = ''; 
+            chartContainer.innerHTML = ''; 
 
             if (data.length > 0) {
                 const table = document.createElement('table');
@@ -126,8 +126,8 @@ function loadChart(chartData, playerNames) {
         legendContainer.appendChild(listItem);
     });
 
-    // Render the chart using Chartist
-    new Chartist.Line('#portfolioChart', chartData, {
+
+    const chart = new Chartist.Line('#portfolioChart', chartData, {
         low: 0,
         high: Math.max(...chartData.series.flat()) + 10,
         showPoint: true,
@@ -135,16 +135,44 @@ function loadChart(chartData, playerNames) {
         axisY: {
             offset: 40,
             labelInterpolationFnc: value => `$${value.toFixed(2)}`
-        },
-        lineColors: colors, // Assign the colors to the chart lines
+        }
     });
 
-    // Add the colors explicitly to each series
+    
     document.querySelectorAll('.ct-series').forEach((series, index) => {
         series.style.stroke = colors[index % colors.length];
     });
-}
 
+    
+    chart.on('draw', function (data) {
+        if (data.type === 'point') {
+            const tooltipCard = document.createElement('div');
+            tooltipCard.classList.add('tooltip-card');
+            tooltipCard.style.display = 'none';
+
+            
+            chartContainer.appendChild(tooltipCard);
+
+            data.element._node.addEventListener('mouseenter', () => {
+                const seriesIndex = data.seriesIndex;
+                const value = data.value.y;
+                const playerName = playerNames[seriesIndex];
+
+                tooltipCard.style.display = 'block';
+                tooltipCard.style.left = `${data.x}px`;
+                tooltipCard.style.top = `${data.y - 40}px`;
+                tooltipCard.innerHTML = `
+                    <div><strong>${playerName}</strong></div>
+                    <div>Price: $${value.toFixed(2)}</div>
+                `;
+            });
+
+            data.element._node.addEventListener('mouseleave', () => {
+                tooltipCard.style.display = 'none';
+            });
+        }
+    });
+}
 
 
 document.addEventListener('DOMContentLoaded', viewPortfolio);

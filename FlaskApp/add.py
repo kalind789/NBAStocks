@@ -18,7 +18,7 @@ with app.app_context():
             arr = string.split(',')
             
             players.append((arr[5], arr[6],arr[4]))
-    # Iterate through DataFrame rows and create PlayerStock entries
+    
 
         for i in range(len(players)):
             stock = PlayerStock(player_first_name=players[i][0],
@@ -35,8 +35,8 @@ with app.app_context():
             db.session.add(stock)
     db.session.commit()
 
-    # Create a new column 'picture_link' in the DataFrame using player IDs
+   
     players_df['picture_link'] = players_df['id'].apply(lambda id: f"https://cdn.nba.com/headshots/nba/latest/1040x760/{id}.png")
 
-    # Save updated DataFrame back to CSV
+   
     players_df.to_csv('static/players.csv', index=False)

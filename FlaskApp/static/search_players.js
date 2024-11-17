@@ -3,7 +3,7 @@
 // Attach the event listener to prevent page refresh
 document.getElementById('searchForm').addEventListener('submit', searchPlayers);
 function searchPlayers(event) {
-    event.preventDefault(); // Prevent the form from submitting normally and refreshing the page
+    event.preventDefault(); 
 
     const query = document.getElementById('searchInput').value;
 
@@ -12,7 +12,7 @@ function searchPlayers(event) {
         .then(response => response.json())
         .then(data => {
             const resultsContainer = document.getElementById('results');
-            resultsContainer.innerHTML = ''; // Clear previous results
+            resultsContainer.innerHTML = ''; 
 
             if (data.length > 0) {
                 data.forEach(player => {
@@ -21,7 +21,7 @@ function searchPlayers(event) {
                     const card = document.createElement('div');
                     card.className = 'card player-card h-100';
 
-                    // Add player and fantasy points info
+                   
                     card.innerHTML = `
                         <div class="card-body text-center">
                             <h5 class="card-title player-name">${player.full_name}</h5>
@@ -41,10 +41,10 @@ function searchPlayers(event) {
 }
 
 function handlePlayerClick(player) {
-    // Prompt user for number of shares
+   
     const shares = prompt(`Enter the number of shares for ${player}:`, "1");
     if (shares === null) {
-        // User cancelled the prompt
+        
         return;
     }
 
@@ -54,13 +54,13 @@ function handlePlayerClick(player) {
         return;
     }
 
-    // Prepare the data to send
+    
     const data = {
-        player_name: player,  // Ensure this is "First Last"
+        player_name: player,  
         shares: sharesInt
     };
 
-    // Send POST request to Flask backend
+    
     fetch('/add-portfolio-entry', {
         method: 'POST',
         headers: {
@@ -72,7 +72,7 @@ function handlePlayerClick(player) {
         .then(data => {
             if (data.status === 'success') {
                 alert(data.message);
-                // Optionally, refresh the portfolio view or update the UI
+                
             } else {
                 alert(`Error: ${data.message}`);
             }

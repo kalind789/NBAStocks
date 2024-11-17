@@ -25,7 +25,7 @@ def fetch_player_data(player_id, last_n_games=5):
             'STL': last_games['STL'].sum()
         }
 
-        # Average out the stats
+       
         avg_stats = {key: total / last_n_games for key,
                      total in total_stats.items()}
         return avg_stats
@@ -51,20 +51,20 @@ def calculate_fantasy_points(stats):
 
 def update_player_stock(player_id):
     """Fetches data for a player, calculates fantasy points, and updates their stock value in the database."""
-    # Fetch the aggregated data for the last 5 games
+   
     player_stats = fetch_player_data(player_id, last_n_games=5)
     if player_stats:
-        # Calculate the player's fantasy points based on the aggregated stats
+       
         avg_fantasy_points = calculate_fantasy_points(player_stats)
 
-        # Stock price logic: base price + (average fantasy points * multiplier)
+       
         base_price = 50
         multiplier = 1.2
         stock_price = base_price + (avg_fantasy_points * multiplier)
 
-        # Update the PlayerStock record
+        
         player_stock = PlayerStock.query.filter_by(player_id=player_id).first()
         if player_stock:
-            # Round to 2 decimal places
+            
             player_stock.value = round(stock_price, 2)
             db.session.commit()

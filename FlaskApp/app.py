@@ -56,7 +56,7 @@ def index():
         players_data = []
         for _, row in player_df.iterrows():
             player_stock = PlayerStock.query.filter_by(player_id=row['id']).first()
-            player_value = player_stock.value if player_stock else 0  # Fallback value
+            player_value = player_stock.value if player_stock else 0  
             
             players_data.append({
                 'name': row['full_name'],
@@ -180,7 +180,7 @@ def search_players():
         {
             'full_name': f"{player.player_first_name} {player.player_last_name}",
             'player_id': player.player_id,
-            'fantasy_points': player.value  # Or calculate based on your logic
+            'fantasy_points': player.value  
         }
         for player in players
     ]
@@ -191,12 +191,12 @@ def search_players():
 @app.route('/get_fantasy_points/<int:player_id>', methods=['GET'])
 def get_fantasy_points_route(player_id):
     """Fetch and calculate the average fantasy points for the last 5 games of a specific player."""
-    # Verify if player exists in PlayerStock
+    
     player = PlayerStock.query.filter_by(player_id=player_id).first()
     if not player:
         return jsonify({'status': 'error', 'message': f'Player ID {player_id} not found'}), 404
 
-    # Fetch stats for the last 5 games
+    #  stats for the last 5 games
     stats = fetch_player_data(player_id, last_n_games=5)
     if stats:
         fantasy_points = calculate_fantasy_points(stats)
@@ -233,12 +233,12 @@ def update_player_stock_route(player_id):
 def get_price_history(player_id):
     """Dynamically generate the last 5 prices for a given player."""
     try:
-        # Check if the player exists
+        
         player = PlayerStock.query.filter_by(player_id=player_id).first()
         if not player:
             return jsonify({'status': 'error', 'message': 'Player not found'}), 404
 
-        # Generate mock price history
+        # faking history :(
         base_price = player.value
         prices = [round(base_price + i * uniform(-5, 5), 2) for i in range(5)]
 

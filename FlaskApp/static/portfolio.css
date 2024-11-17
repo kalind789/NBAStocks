@@ -90,3 +90,17 @@ footer .social-icons a {
 footer .social-icons a:hover {
     color: #f0ad4e;
 }
+
+.tooltip-card {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    pointer-events: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translate(-50%, -100%);
+    font-size: 14px;
+    white-space: nowrap;
+    z-index: 10;
+}

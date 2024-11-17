@@ -90,12 +90,12 @@ $(document).ready(function () {
     const chart = new MyCharts(xData, [yData1, yData2, yData3]);
     chart.createGraph();
 
-    // Bootstrap Carousel Initialization
+    
     const playerSlideshow = $('#player-slideshow');
     if (playerSlideshow.length) {
         playerSlideshow.carousel({
-            interval: 5000, // Auto-scroll every 5 seconds
-            pause: false    // Optional: Prevent pausing on hover
+            interval: 5000, 
+            pause: false    
         });
     }
 });

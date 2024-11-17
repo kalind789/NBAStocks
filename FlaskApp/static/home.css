@@ -1,6 +1,6 @@
 /* static/home.css */
 
-/* General Styles */
+
 body {
     background: linear-gradient(135deg, #0d0d0d, #1a1a1a, #262626, #0d0d0d);
     background-size: 400% 400%;
@@ -10,7 +10,7 @@ body {
     margin: 0;
 }
 
-/* Smooth gradient animation */
+
 @keyframes gradientAnimation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
