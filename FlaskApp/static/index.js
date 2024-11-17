@@ -87,3 +87,15 @@ $(document).ready(function () {
     const chart = new MyCharts(xData, [yData1, yData2, yData3]);
     chart.createGraph();
 });
+
+// Select the carousel element by its ID
+const playerSlideshow = document.querySelector('#player-slideshow');
+
+// Check if the element exists to avoid errors
+if (playerSlideshow) {
+    // Bootstrap Carousel auto-scroll every 5 seconds (5000 milliseconds)
+    $(playerSlideshow).carousel({
+        interval: 5000, // Set the interval to 5 seconds
+        pause: false    // Optional: Prevent pausing on hover
+    });
+}

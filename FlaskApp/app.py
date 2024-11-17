@@ -54,7 +54,17 @@ def home():
 @app.route('/index')
 @login_required
 def index():
-    return render_template("index.html")
+    csv_path = 'static/players.csv'  # Path to the CSV file
+    try:
+        player_df = pd.read_csv(csv_path)
+        # Convert the DataFrame to a list of dictionaries (if you want to pass structured data)
+        players = player_df['full_name'].tolist()
+
+    except Exception as e:
+        players = []  # Fallback if there's an error reading the CSV
+        print(f"Error reading CSV file: {e}")
+
+    return render_template("index.html", players=players)
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
