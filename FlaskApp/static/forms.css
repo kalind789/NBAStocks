@@ -1,95 +1,75 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
 body {
-    background: url('../images/basketball-court.jpg') no-repeat center center fixed;
-    background-size: cover;
-    color: white;
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    margin: 0;
 }
-
-.login-container, form {
-    background: rgba(0, 0, 0, 0.7);
-    padding: 2rem;
-    border-radius: 10px;
+.login-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
     max-width: 400px;
-    margin: 2rem auto;
-    color: #FFF;
+    box-sizing: border-box; /* Ensure padding doesn't affect container width */
 }
-
-h1 {
+.login-container h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
     text-align: center;
-    color: #FF4500; /* Basketball orange */
-    margin-bottom: 1.5rem;
 }
-
-label {
+.form-group {
+    margin-bottom: 15px;
+    width: 100%;
+    box-sizing: border-box; /* Include padding in width calculations */
+}
+.form-group label {
     display: block;
-    margin: 0.5rem 0;
+    margin-bottom: 5px;
 }
-
-input[type="text"], input[type="password"] {
+.form-group input {
     width: 100%;
-    padding: 0.5rem;
-    margin: 0.5rem 0;
-    border: 1px solid #CCC;
-    border-radius: 5px;
-    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box; /* Ensure padding doesn't affect input width */
 }
-
-button {
-    background-color: #FF4500; /* Basketball orange */
+.form-group button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
     color: white;
-    padding: 0.5rem 1rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
-    width: 100%;
-    margin: 0.5rem 0;
-    transition: background-color 0.3s;
+    font-size: 16px;
 }
-
-button:hover {
-    background-color: #E03C00;
+.form-group button:hover {
+    background-color: #0056b3;
 }
-
-a.btn-secondary {
-    display: inline-block;
+.btn-secondary {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #007bff;
     text-decoration: none;
-    padding: 0.5rem 1rem;
-    color: #FF4500;
-    background: transparent;
-    border: 1px solid #FF4500;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
 }
-
-a.btn-secondary:hover {
-    background-color: #FF4500;
-    color: white;
+.btn-secondary:hover {
+    text-decoration: underline;
 }
-
-/* Flash messages */
 .flashes {
-    list-style-type: none;
-    padding: 0;
-    margin: 1rem 0;
-}
-
-.flashes li {
-    margin: 0.5rem 0;
-    padding: 0.5rem;
-    border-radius: 5px;
-}
-
-.flashes li.success {
-    background-color: #28a745;
-    color: white;
-}
-
-.flashes li.danger {
-    background-color: #dc3545;
-    color: white;
-}
-
-.flashes li.info {
-    background-color: #17a2b8;
-    color: white;
+    margin-top: 15px;
+    padding: 10px;
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
 }
