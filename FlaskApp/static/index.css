@@ -1,3 +1,6 @@
+/* static/styles.css */
+
+/* General Styles */
 body {
     background: #1b1b1b;
     color: #e0e0e0;
@@ -6,103 +9,97 @@ body {
     overflow-x: hidden;
 }
 
+/* Navigation Bar */
 .navbar {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #343a40, #212529);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .navbar-brand {
     font-weight: bold;
-    font-size: 1.8rem;
+    font-size: 2rem;
+    color: #f0ad4e !important;
+    transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+    color: #ffffff !important;
 }
 
 .navbar-nav .nav-link {
     color: #e0e0e0;
     padding: 8px 12px;
+    font-size: 1.1rem;
     transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .navbar-nav .nav-link:hover {
     color: #f0ad4e;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(240, 173, 78, 0.1);
     border-radius: 5px;
 }
 
+/* Hero Section */
 .hero-section {
     background-size: cover;
     background-position: center;
-    height: 80vh;
+    height: 90vh;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    position: relative;
     overflow: hidden;
 }
 
-.hero-content {
-    z-index: 2;
-}
-
-.hero-section:before {
+.hero-section::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(27, 27, 27, 0.8);
     z-index: 1;
 }
 
-.hero-section h1, .hero-section p {
+.hero-content {
+    position: relative;
     z-index: 2;
+    text-align: center;
+    animation: fadeInDown 1.5s ease-out;
 }
 
-.hero-section .btn {
-    padding: 12px 25px;
-    font-size: 1.1rem;
+.hero-content h1 {
+    font-size: 4rem;
+    color: #f0ad4e;
+    text-shadow: 2px 2px 4px #000;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.hero-content .btn {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    background: #f0ad4e;
+    color: #1b1b1b;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.hero-section .btn:hover {
-    background-color: #f0ad4e;
-    color: #fff;
-    transform: scale(1.05);
+.hero-content .btn:hover {
+    background-color: #d48806;
+    transform: translateY(-5px);
 }
 
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.ct-chart {
-    height: 350px;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-footer {
-    background: #1b1b1b;
-    color: #ffffff;
-    padding: 10px 0;
-}
-
-/* Animations */
-.animate-fade-in {
-    animation: fadeIn 2s ease-in;
-}
-
-.animate-bounce {
-    animation: bounce 2s infinite;
-}
-
-@keyframes fadeIn {
+/* Keyframes */
+@keyframes fadeInDown {
     0% {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(-50px);
     }
     100% {
         opacity: 1;
@@ -110,11 +107,141 @@ footer {
     }
 }
 
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
+/* Main Content */
+.ct-chart {
+    height: 350px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    margin-bottom: 50px;
+}
+
+/* Footer */
+footer {
+    background: #212529;
+    color: #e0e0e0;
+    padding: 40px 0;
+    border-top: 1px solid #444;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+footer .social-icons {
+    margin-top: 15px;
+}
+
+footer .social-icons a {
+    color: #e0e0e0;
+    margin: 0 10px;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+footer .social-icons a:hover {
+    color: #f0ad4e;
+}
+
+/* Player Card Enhancements */
+.player-card {
+    background: linear-gradient(135deg, #343a40, #212529);
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.player-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+}
+
+.player-image {
+    height: 250px;
+    object-fit: cover;
+    border-bottom: 2px solid #f0ad4e;
+}
+
+.card-body {
+    background-color: transparent;
+    padding: 20px;
+}
+
+.player-name {
+    color: #f0ad4e;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-top: 15px;
+    text-shadow: 1px 1px 2px #000;
+}
+
+/* Carousel Controls */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 50px;
+    height: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background-size: 100%, 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23f0ad4e' viewBox='0 0 8 8'%3E%3Cpath d='M4.854 0.146a.5.5 0 010 .708L2.207 3.5l2.647 2.646a.5.5 0 11-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 01.708 0z'/%3E%3C/svg%3E");
+}
+
+.carousel-control-next-icon {
+    background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23f0ad4e' viewBox='0 0 8 8'%3E%3Cpath d='M3.146 0.146a.5.5 0 010 .708L5.793 3.5 3.146 6.146a.5.5 0 11-.708-.708L5.293 3.5 2.438 0.854a.5.5 0 01.708-.708z'/%3E%3C/svg%3E");
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .hero-content h1 {
+        font-size: 3rem;
     }
-    50% {
-        transform: translateY(-10px);
+
+    .hero-content p {
+        font-size: 1.3rem;
+    }
+
+    .player-image {
+        height: 220px;
+    }
+
+    .player-name {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    .player-image {
+        height: 200px;
+    }
+
+    .player-name {
+        font-size: 1rem;
     }
 }

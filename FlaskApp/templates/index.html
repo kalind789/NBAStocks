@@ -1,33 +1,57 @@
+<!-- templates/index.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+    <!-- Meta and Title -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NBA Stock Exchange - Dashboard</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Chartist CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chartist@0.11.4/dist/chartist.min.css">
+
     <!-- Custom CSS -->
-    <link href="{{ url_for('static', filename='index.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
 </head>
 
-<body class="bg-dark text-light">
+<body>
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="container mt-3">
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand text-warning font-weight-bold" href="/">NBA Stock Exchange</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="/">NBA Stock Exchange</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse text-uppercase" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a href="/index" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="/market" class="nav-link">Market</a></li>
+                    <li class="nav-item"><a href="#player-slideshow" class="nav-link">Market</a></li>
                     {% if current_user.is_authenticated %}
-                        <li class="nav-item"><a href="{{ url_for('logout') }}" class="btn btn-outline-warning btn-sm ml-2">Logout</a></li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('logout') }}" class="btn btn-outline-warning btn-sm ml-2">Logout</a>
+                    </li>
                     {% endif %}
                 </ul>
             </div>
@@ -35,35 +59,49 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-section d-flex align-items-center justify-content-center text-center text-light" style="background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.3)), url('https://source.unsplash.com/featured/?basketball'); background-size: cover; background-attachment: fixed; height: 80vh;">
+    <section class="hero-section"
+        style="background-image: url('https://source.unsplash.com/featured/?nba,basketball');">
         <div class="container hero-content">
-            <h1 class="display-3 text-warning font-weight-bold animate-fade-in">Welcome to NBA Stock Exchange</h1>
-            <p class="lead animate-fade-in">Trade stocks based on real-time NBA player performances. Ready to make your move?</p>
-            <a href="/market" class="btn btn-lg btn-warning mt-3 animate-bounce">Explore the Market</a>
+            <h1 class="animate-fade-in">Welcome to NBA Stock Exchange</h1>
+            <p class="animate-fade-in">Trade stocks based on real-time NBA player performances. Ready to make your
+                move?</p>
+            <a href="#player-slideshow" class="btn btn-warning animate-bounce">Explore the Market</a>
         </div>
     </section>
 
     <!-- Main Content -->
-    <div class="container mt-5 text-center">
-        <h2 class="mb-4 text-warning">Top Performers</h2>
-        <div class="ct-chart ct-golden-section mt-3"></div>
+    <div class="container mt-5">
+        <h2 class="mb-4 text-warning text-center">Top Performers</h2>
+        <div class="ct-chart ct-golden-section"></div>
     </div>
 
-    <!-- Player Slideshow Section -->
+    <!-- Player Cards Slideshow -->
     <section class="container mt-5">
         <h2 class="text-warning text-center mb-4">Player Cards Slideshow</h2>
         <div id="player-slideshow" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-                {% for player in players %}
+                {% for batch in players_batches %}
                 <div class="carousel-item {% if loop.first %}active{% endif %}">
-                    <div class="card text-dark bg-light mx-auto" style="width: 18rem;">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">{{ player }}</h5>  <!-- Updated to use the full_name -->
+                    <div class="row justify-content-center">
+                        {% for player in batch %}
+                        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                            <div class="card player-card">
+                                <img src="{{ player.picture }}"
+                                    class="card-img-top player-image"
+                                    alt="{{ player.name }}"
+                                    loading="lazy"
+                                    onerror="this.onerror=null; this.src='{{ url_for('static', filename='placeholder.png') }}'">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title player-name">{{ player.name }}</h5>
+                                </div>
+                            </div>
                         </div>
+                        {% endfor %}
                     </div>
                 </div>
                 {% endfor %}
             </div>
+            <!-- Carousel Controls -->
             <a class="carousel-control-prev" href="#player-slideshow" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
@@ -73,20 +111,34 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
-    </section>    
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-3 mt-5">
-        <p class="mb-0">&copy; 2024 NBA Stock Exchange. All Rights Reserved.</p>
+    <footer class="text-center">
+        <div class="container">
+            <p>&copy; 2024 NBA Stock Exchange. All Rights Reserved.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
     </footer>
 
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!-- Popper.js and Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <!-- jQuery (required for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <!-- Popper.js (required for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+
+    <!-- Bootstrap's JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
     <!-- Chartist JS -->
     <script src="https://cdn.jsdelivr.net/npm/chartist@0.11.4/dist/chartist.min.js"></script>
+
+    <!-- Font Awesome (for social media icons) -->
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
 
     <!-- Custom JS -->
     <script src="{{ url_for('static', filename='index.js') }}"></script>
