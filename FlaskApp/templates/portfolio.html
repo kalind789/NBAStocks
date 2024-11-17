@@ -15,6 +15,9 @@
     <!-- Font Awesome (for icons) -->
     <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
 
+    <!-- Chartist CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chartist/dist/chartist.min.css">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='portfolio.css') }}">
 </head>
@@ -48,6 +51,10 @@
         <div class="container">
             <h1 class="text-center text-warning mb-5">Your Portfolio</h1>
             <div id="portfolioResults" class="table-responsive"></div>
+            <div id="chartContainer" class="mt-5">
+                <h3 class="text-center text-warning">Last 5 Game Prices</h3>
+                <div class="ct-chart"></div>
+            </div>
         </div>
     </section>
 
@@ -67,7 +74,11 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
+    <!-- Chartist JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chartist/dist/chartist.min.js"></script>
+
     <!-- Custom JS -->
     <script src="{{ url_for('static', filename='portfolio.js') }}"></script>
 </body>
+
 </html>

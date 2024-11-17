@@ -74,6 +74,9 @@ function viewPortfolio() {
 
                 table.appendChild(tbody);
                 portfolioContainer.appendChild(table);
+
+                // Render Chartist.js chart for the first five players
+                loadChart(data.slice(0, 5));
             } else {
                 portfolioContainer.textContent = 'Your portfolio is empty.';
             }
@@ -84,5 +87,45 @@ function viewPortfolio() {
         });
 }
 
-// Automatically load the portfolio when the page loads
+function loadChart(players) {
+    const chartContainer = document.querySelector('.ct-chart');
+    const labels = ['Game 1', 'Game 2', 'Game 3', 'Game 4', 'Game 5']; // Labels for the games
+    const series = []; // Series for the chart
+
+    let completedRequests = 0;
+
+    players.forEach(player => {
+        fetch(`/get_fantasy_points/${player.player_id}`)
+            .then(response => response.json())
+            .then(playerData => {
+                if (playerData.status === 'success') {
+                    // Extract last 5 game prices (ensure it's an array)
+                    const last5Prices = Object.values(playerData.average_stats || {}).slice(0, 5);
+                    
+                    // Push the last 5 prices into the series array
+                    series.push(last5Prices);
+
+                    completedRequests++;
+                    if (completedRequests === players.length) {
+                        // All player data loaded, render the chart
+                        new Chartist.Line(chartContainer, {
+                            labels: labels,
+                            series: series
+                        }, {
+                            low: 0,
+                            showArea: true,
+                            fullWidth: true,
+                            chartPadding: {
+                                right: 40
+                            }
+                        });
+                    }
+                }
+            })
+            .catch(error => console.error(`Error fetching chart data for player ID ${player.player_id}:`, error));
+    });
+}
+
+
+// Automatically load the portfolio and chart when the page loads
 document.addEventListener('DOMContentLoaded', viewPortfolio);
