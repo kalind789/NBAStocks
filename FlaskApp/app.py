@@ -234,18 +234,18 @@ def search_page():
 def search_players():
     query = request.args.get('query')
     if query:
-        # Search for players by first name or last name
+       
         results = PlayerStock.query.filter(
             PlayerStock.player_first_name.ilike(f'%{query}%') |
             PlayerStock.player_last_name.ilike(f'%{query}%')
         ).all()
 
-        # Return player names as JSON response
+        
         if results:
             return jsonify([f'{player.player_first_name} {player.player_last_name}' for player in results])
         else:
-            return jsonify([])  # If no results, return empty list
-    return jsonify([])  # If no query, return empty list
+            return jsonify([])  
+    return jsonify([])  
 
 
 if __name__ == "__main__":
