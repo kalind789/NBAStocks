@@ -148,6 +148,15 @@ def secondTemperature():
     }
     return jsonify(data)
 
+
+@app.route('/update_player_stocks')
+def update_player_stocks():
+    player_ids = [1630173, 203500, 1628389]  # Example IDs
+    for player_id in player_ids:
+        update_player_stock(player_id)
+    flash('Player stocks updated successfully!', 'success')
+    return redirect(url_for('index'))
+
 @app.route('/update_player_stocks')
 @login_required  # Optional if you want to restrict access
 def update_player_stocks():
