@@ -14,7 +14,7 @@
         <button type="submit">Search</button>
     </form>
 
-    <ul id="results"></ul> <!-- List where search results will be shown -->
+    <div id="results"></div> <!-- Container where search results will be shown -->
 
     <script>
         
@@ -25,23 +25,30 @@
 
             // Send GET request to Flask backend
             fetch(`/search-players?query=${query}`)
-                .then(response => response.json()) 
+                .then(response => response.json())
                 .then(data => {
                     const resultsContainer = document.getElementById('results');
-                    resultsContainer.innerHTML = ''; 
+                    resultsContainer.innerHTML = ''; // Clear previous results
 
-                    // Display the results
+                    
                     if (data.length > 0) {
                         data.forEach(player => {
-                            const listItem = document.createElement('li');
-                            listItem.textContent = `Player: ${player}`; 
-                            resultsContainer.appendChild(listItem);
+                            const button = document.createElement('button');
+                            button.textContent = `Player: ${player}`; 
+                            button.onclick = () => handlePlayerClick(player);
+                            resultsContainer.appendChild(button);
                         });
                     } else {
                         resultsContainer.innerHTML = 'No players found.';
                     }
                 })
                 .catch(error => console.error('Error:', error));
+        }
+
+        
+        function handlePlayerClick(player) {
+            alert(`You clicked on player: ${player}`);
+           
         }
     </script>
 </body>
