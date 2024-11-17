@@ -1,0 +1,56 @@
+<!-- templates/portfolio.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Portfolio</title>
+</head>
+
+<body>
+    <h1>Your Portfolio</h1>
+    <div id="portfolioResults"></div>
+
+    <script>
+        function viewPortfolio() {
+                fetch('/portfolio-data')
+                    .then(response => response.json())
+                    .then(data => {
+                        const portfolioContainer = document.getElementById('portfolioResults');
+                        portfolioContainer.innerHTML = '';
+
+                        if (data.length > 0) {
+                            const table = document.createElement('table');
+                            table.border = '1';
+                            const header = table.insertRow();
+                            header.innerHTML = `
+                    <th>Player Name</th>
+                    <th>Shares</th>
+                    <th>Current Value</th>
+                    <th>Total Value</th>
+                `;
+                            data.forEach(entry => {
+                                const row = table.insertRow();
+                                row.innerHTML = `
+                        <td>${entry.player_name}</td>
+                        <td>${entry.shares}</td>
+                        <td>$${entry.value.toFixed(2)}</td>
+                        <td>$${entry.total_value.toFixed(2)}</td>
+                    `;
+                            });
+                            portfolioContainer.appendChild(table);
+                        } else {
+                            portfolioContainer.innerHTML = 'Your portfolio is empty.';
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+
+            // Automatically load the portfolio when the page loads
+            window.onload = viewPortfolio;
+
+    </script>
+</body>
+
+</html>

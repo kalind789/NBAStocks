@@ -26,4 +26,4 @@ class PlayerStock(db.Model):
     value = db.Column(db.Float, nullable=False)
 
     def __repr__(self):
-        return f"PlayerStock, name is: {self.player_first_name} {self.player_last_name}), fantasy points: {self.fantasy_points}"
+        return f"PlayerStock, name is: {self.player_first_name} {self.player_last_name}), value: {self.value}"

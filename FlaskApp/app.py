@@ -1,8 +1,9 @@
 from datetime import datetime, timedelta
 from flask import Flask, render_template, redirect, url_for, request, flash, json, jsonify, Response
 from flask_cors import CORS
-from data_collection import calculate_fantasy_points, fetch_player_data  # Import Flask-Cors
-from models import db, User  # Assuming models.py contains the User model with username, email, and password fields
+from data_collection import calculate_fantasy_points, fetch_player_data  
+
+from models import db, User, PortfolioEntry
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from flask_migrate import Migrate
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -237,9 +238,11 @@ def read_players():
 
 
 @app.route('/search')
+@login_required
 def search_page():
     return render_template('read_players.html')
 
+''''
 @app.route('/search-players', methods=['GET'])
 def search_players():
     query = request.args.get('query')
@@ -256,8 +259,131 @@ def search_players():
         else:
             return jsonify([])  
     return jsonify([])  
+'''
+
+#updated and new search players func:
 
 
+@app.route('/search-players', methods=['GET'])
+@login_required
+def search_players():
+    """
+    Route to search for players based on the query.
+    Returns a list of player full names matching the search term.
+    """
+    query = request.args.get('query', '').strip().lower()
+    if not query:
+        return jsonify([])
+
+    # Search in the PlayerStock table (case-insensitive)
+    players = PlayerStock.query.filter(
+        db.or_(
+            PlayerStock.player_first_name.ilike(f'%{query}%'),
+            PlayerStock.player_last_name.ilike(f'%{query}%')
+        )
+    ).all()
+
+    # Serialize the data as full names
+    players_data = [
+        f"{player.player_first_name} {player.player_last_name}" for player in players]
+
+    return jsonify(players_data)
+
+
+@app.route('/portfolio')
+@login_required
+def portfolio():
+    return render_template('portfolio.html')
+
+
+@app.route('/portfolio-data', methods=['GET'])
+@login_required
+def portfolio_data():
+    entries = PortfolioEntry.query.filter_by(user_id=current_user.id).all()
+    data = []
+
+    for entry in entries:
+        player = PlayerStock.query.get(entry.player_stock_id)
+        if player:
+            data.append({
+                'player_name': f"{player.player_first_name} {player.player_last_name}",
+                'shares': entry.shares,
+                'value': player.value,
+                'total_value': entry.shares * player.value
+            })
+
+    return jsonify(data)
+
+
+
+@app.route('/add-portfolio-entry', methods=['POST'])
+@login_required
+def add_portfolio_entry():
+    """
+    Route to add a selected player to the current user's portfolio.
+    Expects JSON data with 'player_name' (e.g., "LeBron James") and 'shares'.
+    """
+    data = request.get_json()
+    if not data:
+        return jsonify({'status': 'error', 'message': 'No data provided.'}), 400
+
+    player_name = data.get('player_name')
+    shares = data.get('shares', 1)  # Default to 1 share if not specified
+
+    # Validate input
+    if not player_name:
+        return jsonify({'status': 'error', 'message': 'Player name is required.'}), 400
+
+    try:
+        shares = int(shares)
+        if shares <= 0:
+            return jsonify({'status': 'error', 'message': 'Number of shares must be a positive integer.'}), 400
+    except ValueError:
+        return jsonify({'status': 'error', 'message': 'Number of shares must be an integer.'}), 400
+
+    # Split player_name into first and last name
+    try:
+        first_name, last_name = player_name.strip().split(' ', 1)
+    except ValueError:
+        return jsonify({'status': 'error', 'message': 'Player name must include both first and last names.'}), 400
+
+    # Retrieve the PlayerStock by first and last name
+    player_stock = PlayerStock.query.filter_by(
+        player_first_name=first_name,
+        player_last_name=last_name
+    ).first()
+
+    if not player_stock:
+        return jsonify({'status': 'error', 'message': 'Player not found.'}), 404
+
+    # Check if the user already has an entry for this player_stock_id
+    existing_entry = PortfolioEntry.query.filter_by(
+        user_id=current_user.id,
+        player_stock_id=player_stock.id
+    ).first()
+
+    if existing_entry:
+        # Update the number of shares
+        existing_entry.shares += shares
+        message = f'Updated shares for {player_name}. Total shares: {existing_entry.shares}.'
+    else:
+        # Create a new portfolio entry
+        new_entry = PortfolioEntry(
+            user_id=current_user.id,
+            player_stock_id=player_stock.id,
+            shares=shares
+        )
+        db.session.add(new_entry)
+        message = f'Added {player_name} to your portfolio with {shares} shares.'
+
+    # Commit the changes to the database
+    try:
+        db.session.commit()
+        return jsonify({'status': 'success', 'message': message}), 200
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'status': 'error', 'message': 'Failed to add portfolio entry.'}), 500
+    
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
