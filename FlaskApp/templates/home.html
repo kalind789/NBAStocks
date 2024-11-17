@@ -72,7 +72,6 @@
 
                 chart.on('draw', (data) => {
                     if (data.type === 'point') {
-                        // Ensure 'this' refers to the class instance
                         data.element._node.addEventListener('mouseover', (event) => {
                             this.showCard(event, data.value.y, data.index);
                         });
@@ -86,7 +85,7 @@
 
             showCard(event, value, index) {
                 const card = document.getElementById('hoverCard');
-                card.innerHTML = `Value: ${value}<br>Day: ${this.xData[index]}`;
+                card.innerHTML = `Fantasy Points: ${value}<br>Date: ${this.xData[index]}`;
                 card.style.top = `${event.pageY - 40}px`;
                 card.style.left = `${event.pageX + 10}px`;
                 card.classList.add('show');
@@ -98,25 +97,24 @@
             }
         }
 
-        const XData = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+        // Fetch fantasy points data for a specific player
+        const playerId = 2544; // Replace with the desired player ID
 
-        // Fetch both datasets from the server
-        $.when(
-            $.getJSON('/temperature'),
-            $.getJSON('/secondTemperature')
-        ).done(function (temperatureResp, secondTempResp) {
-            console.log("Temperature Data:", temperatureResp[0].temperature);
-            console.log("Second Temperature Data:", secondTempResp[0].temperature);
+        $.getJSON(`/get_fantasy_points/${playerId}`, function (response) {
+            if (response.status === 'success') {
+                const dates = response.dates;
+                const fantasyPoints = response.fantasy_points;
 
-            const dataArray = [
-                temperatureResp[0].temperature,
-                secondTempResp[0].temperature
-            ];
+                const dataArray = [fantasyPoints]; // Single player data
 
-            const obj = new MyCharts(XData, dataArray);
-            obj.createGraph();
+                const obj = new MyCharts(dates, dataArray);
+                obj.createGraph();
+            } else {
+                console.error(response.message);
+            }
         });
     </script>
+
 
 
 

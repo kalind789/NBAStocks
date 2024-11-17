@@ -1,29 +1,54 @@
 # data_collection.py
 
-from nba_api.stats.endpoints import playercareerstats
+from nba_api.stats.endpoints import playercareerstats, playergamelog
 import random
 from models import PlayerStock, db
 
-def fetch_player_data(player_id):
-    """Fetch player data from the NBA API."""
+
+def fetch_player_data(player_id, date=None):
+    """Fetch player data from the NBA API for a specific date."""
     try:
-        career = playercareerstats.PlayerCareerStats(player_id=str(player_id))
-        career_df = career.get_data_frames()[0]
-        if not career_df.empty:
-            latest_stats = career_df.iloc[-1]
+        # Fetch the player's game logs
+        gamelog = playergamelog.PlayerGameLog(player_id=str(player_id))
+        gamelog_df = gamelog.get_data_frames()[0]
+
+        print("Columns in gamelog_df:", gamelog_df.columns)
+        print("First few rows of gamelog_df:\n", gamelog_df.head())
+
+        if date:
+            # Convert 'GAME_DATE' to datetime objects for accurate comparison
+            gamelog_df['GAME_DATE'] = pd.to_datetime(gamelog_df['GAME_DATE'])
+            date_obj = pd.to_datetime(date)
+            # Filter the DataFrame for the specific date
+            game_stats = gamelog_df[gamelog_df['GAME_DATE'] == date_obj]
+        else:
+            # Use the most recent game if no date is provided
+            game_stats = gamelog_df.iloc[:1]
+
+        print("game_stats:\n", game_stats)
+
+        if not game_stats.empty:
+            stats = game_stats.iloc[0]
+            print("stats:\n", stats)
+            print("Type of stats:", type(stats))
             return {
-                'PTS': latest_stats['PTS'],
-                'AST': latest_stats['AST'],
-                'REB': latest_stats['REB'],
-                'BLK': latest_stats['BLK'],
-                'STL': latest_stats['STL']
+                'PTS': stats['PTS'],
+                'AST': stats['AST'],
+                'REB': stats['REB'],
+                'BLK': stats['BLK'],
+                'STL': stats['STL']
             }
-        return None
+        else:
+            print(
+                f"No game stats available for player {player_id} on date {date}.")
+            return None
     except Exception as e:
-        print(f"Error fetching data for player {player_id}: {e}")
+        print(
+            f"Error fetching data for player {player_id} on date {date}: {e}")
         return None
 
-def calculate_fantasy_points(stats):
+
+def calculate_fantasy_points(stats) -> int:
     """Calculate fantasy points using a custom formula."""
     if stats is None:
         return 0

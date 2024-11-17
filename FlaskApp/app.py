@@ -1,10 +1,13 @@
+from datetime import datetime, timedelta
 from flask import Flask, render_template, redirect, url_for, request, flash, json, jsonify
-from flask_cors import CORS  # Import Flask-Cors
+from flask_cors import CORS
+from data_collection import calculate_fantasy_points, fetch_player_data  # Import Flask-Cors
 from models import db, User  # Assuming models.py contains the User model with username, email, and password fields
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from flask_migrate import Migrate
 from werkzeug.security import generate_password_hash, check_password_hash
 import random
+import pandas as pd
 
 from apscheduler.schedulers.background import BackgroundScheduler
 from data_collection import update_player_stock
@@ -149,13 +152,50 @@ def secondTemperature():
     return jsonify(data)
 
 
-@app.route('/update_player_stocks')
-def update_player_stocks():
-    player_ids = [1630173, 203500, 1628389]  # Example IDs
+@app.route('/update_player_stocks_2')
+def update_player_stocks2():
+    player_ids = [1630173, 203500, 1628389]  
     for player_id in player_ids:
         update_player_stock(player_id)
     flash('Player stocks updated successfully!', 'success')
     return redirect(url_for('index'))
+
+
+@app.route('/get_fantasy_points/<int:player_id>', methods=['GET'])
+def get_fantasy_points_route(player_id):
+    """Flask route to fetch fantasy points over the last 5 days for a specific player."""
+    # Initialize lists to store dates and fantasy points
+    dates = []
+    fantasy_points_list = []
+
+    # Fetch data for the last 5 days
+    today = datetime.now()
+    for i in range(5):
+        # Corrected line: use timedelta without the datetime prefix
+        date = today - timedelta(days=4 - i)
+        date_str = date.strftime('%Y-%m-%d')
+        dates.append(date_str)
+
+        # Fetch player data for the specific date
+        stats = fetch_player_data(player_id, date=date_str)
+        if stats:
+            fantasy_points = calculate_fantasy_points(stats)
+            fantasy_points_list.append(fantasy_points)
+        else:
+            fantasy_points_list.append(0.0)
+
+    # Convert data types to native Python types
+    player_id = int(player_id)
+    fantasy_points_list = [float(fp) for fp in fantasy_points_list]
+    dates = [str(date) for date in dates]
+
+    # Return the data in JSON format
+    return jsonify({
+        'status': 'success',
+        'player_id': player_id,
+        'dates': dates,
+        'fantasy_points': fantasy_points_list
+    }), 200
 
 @app.route('/update_player_stocks')
 @login_required  # Optional if you want to restrict access
