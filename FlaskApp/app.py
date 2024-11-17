@@ -212,12 +212,21 @@ def get_fantasy_points_route(player_id):
 
 @app.route('/update-player-stock/<int:player_id>', methods=['POST'])
 def update_player_stock_route(player_id):
+    """Update the stock value of a specific player."""
     try:
-        # Update the player's stock value
         update_player_stock(player_id)
-        return '', 204  # No Content response for successful update
+        player_stock = PlayerStock.query.filter_by(player_id=player_id).first()
+        if not player_stock:
+            return jsonify({'status': 'error', 'message': f'Player ID {player_id} not found'}), 404
+
+        return jsonify({
+            'status': 'success',
+            'player_id': player_id,
+            'new_value': player_stock.value
+        }), 200
     except Exception as e:
         return jsonify({'status': 'error', 'message': str(e)}), 500
+
 
 @app.route('/add-portfolio-entry', methods=['POST'])
 @login_required

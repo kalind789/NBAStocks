@@ -17,7 +17,7 @@ function viewPortfolio() {
                         <th>Shares</th>
                         <th>Current Value</th>
                         <th>Total Value</th>
-                        <th>Fantasy Points (Last 5 Games Average)</th>
+                        <th>Fantasy Points</th>
                     </tr>
                 `;
                 table.appendChild(thead);
@@ -31,30 +31,44 @@ function viewPortfolio() {
                     row.innerHTML = `
                         <td>${entry.player_name}</td>
                         <td>${entry.shares}</td>
-                        <td>$${entry.value.toFixed(2)}</td>
-                        <td>$${entry.total_value.toFixed(2)}</td>
-                        <td>Loading...</td> <!-- Placeholder for fantasy points -->
+                        <td>$<span id="value-${entry.player_id}">${entry.value.toFixed(2)}</span></td>
+                        <td>$<span id="total-${entry.player_id}">${entry.total_value.toFixed(2)}</span></td>
+                        <td id="fantasy-${entry.player_id}">Loading...</td>
                     `;
-
                     tbody.appendChild(row);
 
-                    // Automatically update player stock value
-                    fetch(`/update-player-stock/${entry.player_id}`, { method: 'POST' })
-                        .then(() => {
-                            // Fetch fantasy points for each player
-                            return fetch(`/get_fantasy_points/${entry.player_id}`);
-                        })
+                    // Fetch fantasy points and update the stock price for this player
+                    fetch(`/get_fantasy_points/${entry.player_id}`)
                         .then(response => response.json())
                         .then(playerData => {
                             if (playerData.status === 'success') {
                                 const fantasyPoints = playerData.fantasy_points;
-                                row.cells[4].textContent = fantasyPoints.toFixed(2); // Update the "Fantasy Points" cell
+
+                                // Update fantasy points in the table
+                                document.getElementById(`fantasy-${entry.player_id}`).textContent = fantasyPoints.toFixed(2);
+
+                                // Update player stock price
+                                fetch(`/update-player-stock/${entry.player_id}`, { method: 'POST' })
+                                    .then(() => {
+                                        // Re-fetch portfolio data to get the updated value
+                                        fetch(`/portfolio-data`)
+                                            .then(response => response.json())
+                                            .then(updatedData => {
+                                                const updatedPlayer = updatedData.find(p => p.player_id === entry.player_id);
+                                                if (updatedPlayer) {
+                                                    document.getElementById(`value-${entry.player_id}`).textContent = updatedPlayer.value.toFixed(2);
+                                                    document.getElementById(`total-${entry.player_id}`).textContent = (updatedPlayer.value * entry.shares).toFixed(2);
+                                                }
+                                            });
+                                    })
+                                    .catch(error => console.error(`Error updating stock for player ${entry.player_id}:`, error));
                             } else {
-                                row.cells[4].textContent = 'N/A'; // Handle missing data
+                                document.getElementById(`fantasy-${entry.player_id}`).textContent = 'N/A';
                             }
                         })
                         .catch(error => {
-                            row.cells[4].textContent = 'Error'; // Indicate error
+                            console.error(`Error fetching fantasy points for player ID ${entry.player_id}:`, error);
+                            document.getElementById(`fantasy-${entry.player_id}`).textContent = 'Error';
                         });
                 });
 
@@ -64,7 +78,8 @@ function viewPortfolio() {
                 portfolioContainer.textContent = 'Your portfolio is empty.';
             }
         })
-        .catch(() => {
+        .catch(error => {
+            console.error('Error fetching portfolio:', error);
             document.getElementById('portfolioResults').textContent = 'Failed to load portfolio.';
         });
 }
