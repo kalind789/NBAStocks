@@ -58,14 +58,30 @@ def index():
     csv_path = 'static/players.csv'  # Path to the CSV file
     try:
         player_df = pd.read_csv(csv_path)
-        # Convert the DataFrame to a list of dictionaries (if you want to pass structured data)
-        players = player_df['full_name'].tolist()
-
+        # Ensure the required columns exist
+        if 'full_name' not in player_df.columns or 'picture_link' not in player_df.columns:
+            raise ValueError("CSV file must contain 'full_name' and 'picture_link' columns.")
+        
+        # Convert the DataFrame columns to lists
+        players_names = player_df['full_name'].tolist()
+        players_pictures = player_df['picture_link'].tolist()
+        
+        # Combine the names and pictures into a list of dictionaries
+        players = [{'name': name, 'picture': picture} for name, picture in zip(players_names, players_pictures)]
+        
+        # Group players into batches of 3 for multiple cards per slide
+        batch_size = 3
+        players_batches = [players[i:i + batch_size] for i in range(0, len(players), batch_size)]
     except Exception as e:
-        players = []  # Fallback if there's an error reading the CSV
+        players_batches = []  # Fallback in case of error
+        flash(f"Error reading player data: {e}", "danger")
         print(f"Error reading CSV file: {e}")
 
-    return render_template("index.html", players=players)
+    return render_template(
+        "index.html",
+        players_batches=players_batches,
+        current_user=current_user  # Pass current_user to the template
+    )
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():

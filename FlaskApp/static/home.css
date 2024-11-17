@@ -1,59 +1,247 @@
+/* static/home.css */
+
+/* General Styles */
 body {
+    background: linear-gradient(135deg, #0d0d0d, #1a1a1a, #262626, #0d0d0d);
+    background-size: 400% 400%;
+    animation: gradientAnimation 12s ease infinite;
+    color: #e0e0e0;
     font-family: 'Segoe UI', sans-serif;
     margin: 0;
-    padding: 0;
-    background-color: #f0f4f8;
+}
+
+/* Smooth gradient animation */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Navigation Bar */
+.navbar {
+    background: transparent;
+    padding: 20px;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 2rem;
+    color: #f0ad4e !important;
+    transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+    color: #ffffff !important;
+}
+
+.navbar-nav .nav-link {
+    color: #e0e0e0;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #f0ad4e;
+}
+
+/* Hero Section */
+.hero-section {
+    height: 100vh;
+    background: url('https://source.unsplash.com/featured/?nba,basketball') no-repeat center center/cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(27, 27, 27, 0.8);
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2;
 }
 
 .hero-section h1 {
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-size: 4rem;
+    color: #f0ad4e;
+    text-shadow: 2px 2px 4px #000;
+    margin-bottom: 20px;
+    animation: fadeInDown 1.5s ease-out;
 }
 
 .hero-section p {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    animation: fadeInDown 1.5s ease-out;
 }
 
-.btn-warning {
-    background-color: #ffb703;
-    border: none;
-    padding: 12px 24px;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: background-color 0.3s ease-in-out;
+.hero-section .btn {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    margin: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.btn-warning:hover {
-    background-color: #e09b03;
-}
-
-.btn-outline-light {
-    border: 2px solid #ffffff;
-    padding: 12px 24px;
-    font-weight: bold;
-    border-radius: 5px;
-    color: white;
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+.hero-section .btn:hover {
+    transform: translateY(-5px);
 }
 
 .btn-outline-light:hover {
-    background-color: #ffffff;
-    color: #1e3a8a;
+    background-color: #f0ad4e;
+    color: #1b1b1b;
 }
 
-.chart-container {
-    margin-top: 40px;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+/* Keyframes */
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.chart-wrapper {
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 8px;
+/* Features Section */
+.features-section {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 60px 0;
 }
 
+.features-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    text-shadow: 1px 1px 2px #000;
+}
+
+.features-section .col-md-4 {
+    animation: fadeInUp 1s ease forwards;
+    opacity: 0;
+}
+
+.features-section .col-md-4:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.features-section .col-md-4:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.features-section .col-md-4:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+}
+
+.features-section i {
+    transition: transform 0.3s ease;
+}
+
+.features-section i:hover {
+    transform: scale(1.2);
+}
+
+.features-section h4 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.features-section p {
+    color: #b3b3b3;
+}
+
+/* Call to Action Section */
+.cta-section {
+    background: linear-gradient(135deg, #343a40, #212529);
+    padding: 60px 0;
+}
+
+.cta-section h2 {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 2px #000;
+}
+
+.cta-section .btn {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cta-section .btn:hover {
+    background-color: #d48806;
+    transform: translateY(-5px);
+}
+
+/* Footer */
 footer {
-    font-size: 0.9rem;
+    background: #1b1b1b;
+    padding: 40px 0;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1rem;
+    color: #e0e0e0;
+}
+
+footer .social-icons {
+    margin-top: 15px;
+}
+
+footer .social-icons a {
+    color: #e0e0e0;
+    margin: 0 10px;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+footer .social-icons a:hover {
+    color: #f0ad4e;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .hero-section h1 {
+        font-size: 3rem;
+    }
+
+    .hero-section p {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-section p {
+        font-size: 1.1rem;
+    }
+
+    .features-section .col-md-4 {
+        margin-bottom: 30px;
+    }
 }

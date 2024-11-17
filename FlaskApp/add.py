@@ -1,6 +1,6 @@
 from app import app
 from models import db, User, PortfolioEntry, PlayerStock
-
+import pandas as pd
 
 players = []
 
@@ -23,6 +23,15 @@ with app.app_context():
                             player_last_name=players[i][1], value=100.0)
         db.session.add(stock)
         db.session.commit()
-        
 
-print(players)
+# Load the CSV file
+players_df = pd.read_csv('static/players.csv')
+
+# Create a new column 'picture_link' using a loop
+picture_links = []
+for id in players_df['id']:
+    picture_links.append(f"https://cdn.nba.com/headshots/nba/latest/1040x760/{id}.png")
+
+# Assign the list to the new column
+players_df['picture_link'] = picture_links
+players_df.to_csv('static/players.csv')
