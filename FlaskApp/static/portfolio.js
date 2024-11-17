@@ -1,5 +1,3 @@
-// static/portfolio.js
-
 function viewPortfolio() {
     fetch('/portfolio-data')
         .then(response => response.json())
@@ -19,6 +17,7 @@ function viewPortfolio() {
                         <th>Shares</th>
                         <th>Current Value</th>
                         <th>Total Value</th>
+                        <th>Fantasy Points (Last 5 Games)</th>
                     </tr>
                 `;
                 table.appendChild(thead);
@@ -27,7 +26,6 @@ function viewPortfolio() {
 
                 data.forEach(entry => {
                     const row = document.createElement('tr');
-                    // Store player_id in a data attribute without displaying it
                     row.setAttribute('data-player-id', entry.player_id);
 
                     row.innerHTML = `
@@ -35,6 +33,7 @@ function viewPortfolio() {
                         <td>${entry.shares}</td>
                         <td>$${entry.value.toFixed(2)}</td>
                         <td>$${entry.total_value.toFixed(2)}</td>
+                        <td>Loading...</td> <!-- Placeholder for fantasy points -->
                     `;
 
                     tbody.appendChild(row);
@@ -43,13 +42,16 @@ function viewPortfolio() {
                     fetch(`/player-data?player_id=${entry.player_id}`)
                         .then(response => response.json())
                         .then(playerData => {
-                            console.log(`Data for player ID ${entry.player_id}:`, playerData);
-                            // You can process playerData as needed here
-                            // For example, store it in the row's data attributes
-                            row.setAttribute('data-player-stats', JSON.stringify(playerData));
+                            if (playerData.status === 'success') {
+                                const fantasyPoints = playerData.stats.reduce((sum, game) => sum + game.fantasy_points, 0);
+                                row.cells[4].textContent = fantasyPoints; // Update the "Fantasy Points" cell
+                            } else {
+                                row.cells[4].textContent = 'N/A'; // Handle missing data
+                            }
                         })
                         .catch(error => {
                             console.error(`Error fetching data for player ID ${entry.player_id}:`, error);
+                            row.cells[4].textContent = 'Error'; // Indicate error
                         });
                 });
 

@@ -2,7 +2,6 @@
 
 // Attach the event listener to prevent page refresh
 document.getElementById('searchForm').addEventListener('submit', searchPlayers);
-
 function searchPlayers(event) {
     event.preventDefault(); // Prevent the form from submitting normally and refreshing the page
 
@@ -21,13 +20,16 @@ function searchPlayers(event) {
                     col.className = 'col-md-4 mb-3';
                     const card = document.createElement('div');
                     card.className = 'card player-card h-100';
+
+                    // Add player and fantasy points info
                     card.innerHTML = `
                         <div class="card-body text-center">
-                            <h5 class="card-title player-name">${player}</h5>
+                            <h5 class="card-title player-name">${player.full_name}</h5>
+                            <p>Fantasy Points: ${player.fantasy_points}</p>
                             <button class="btn btn-warning mt-3">Buy Shares</button>
                         </div>
                     `;
-                    card.querySelector('button').onclick = () => handlePlayerClick(player);
+                    card.querySelector('button').onclick = () => handlePlayerClick(player.full_name);
                     col.appendChild(card);
                     resultsContainer.appendChild(col);
                 });
