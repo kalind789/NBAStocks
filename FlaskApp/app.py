@@ -23,7 +23,7 @@ login_manager.login_view = 'login'
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-# Scheduler setup
+
 scheduler = BackgroundScheduler()
 players_df = pd.read_csv('static/players.csv')
 player_ids = players_df['id']
@@ -48,7 +48,7 @@ def index():
         if 'full_name' not in player_df.columns or 'picture_link' not in player_df.columns:
             raise ValueError("CSV file must contain 'full_name' and 'picture_link' columns.")
         
-        # Fetch player values from the database
+        # get vals from db
         players_data = []
         for _, row in player_df.iterrows():
             player_stock = PlayerStock.query.filter_by(player_id=row['id']).first()
@@ -57,10 +57,10 @@ def index():
             players_data.append({
                 'name': row['full_name'],
                 'picture': row['picture_link'],
-                'value': player_value  # Include player value from the database
+                'value': player_value 
             })
 
-        # Group players into batches of 3 for carousel slides
+        
         batch_size = 3
         players_batches = [players_data[i:i + batch_size] for i in range(0, len(players_data), batch_size)]
     except Exception as e:
@@ -127,9 +127,9 @@ def portfolio_data():
     for entry in entries:
         player = PlayerStock.query.get(entry.player_stock_id)
         if player:
-            # Include player_id in the response
+            
             data.append({
-                'player_id': player.player_id,  # Ensure this field is populated in PlayerStock
+                'player_id': player.player_id, 
                 'player_name': f"{player.player_first_name} {player.player_last_name}",
                 'shares': entry.shares,
                 'value': player.value,
@@ -157,6 +157,7 @@ def player_data():
     except Exception as e:
         return jsonify({'status': 'error', 'message': str(e)}), 500
 
+
 @app.route('/search-players', methods=['GET'])
 @login_required
 def search_players():
@@ -164,7 +165,6 @@ def search_players():
     if not query:
         return jsonify([])
 
-    # Search in the PlayerStock table (case-insensitive)
     players = PlayerStock.query.filter(
         db.or_(
             PlayerStock.player_first_name.ilike(f'%{query}%'),
@@ -172,15 +172,17 @@ def search_players():
         )
     ).all()
 
-    players_data = []
-    for player in players:
-        players_data.append({
-            'full_name': f"{player.player_first_name} {player.player_last_name}",
-            'player_id': player.player_id,  # Ensure this is correctly populated
-            'fantasy_points': player.value  # Assuming value is the player's fantasy points
-        })
+    players_data = [
+        {
+            "full_name": f"{player.player_first_name} {player.player_last_name}",
+            "player_id": player.player_id,
+            "fantasy_points": player.value
+        }
+        for player in players
+    ]
 
-    return jsonify(players_data)
+    return jsonify(players_data), 200
+
 
 @app.route('/add-portfolio-entry', methods=['POST'])
 @login_required

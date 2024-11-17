@@ -24,7 +24,7 @@ class PlayerStock(db.Model):
     player_first_name = db.Column(db.String(100), nullable=False)
     player_last_name = db.Column(db.String(100), nullable=False)
     value = db.Column(db.Float, nullable=False)
-    player_id = db.Column(db.Integer, unique=True, nullable=False)  # Add this line if not present
+    player_id = db.Column(db.Integer, unique=True, nullable=False)  
 
 
     def __repr__(self):
