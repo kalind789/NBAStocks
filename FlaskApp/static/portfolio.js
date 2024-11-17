@@ -38,8 +38,12 @@ function viewPortfolio() {
 
                     tbody.appendChild(row);
 
-                    // Fetch fantasy points for each player
-                    fetch(`/get_fantasy_points/${entry.player_id}`)
+                    // Automatically update player stock value
+                    fetch(`/update-player-stock/${entry.player_id}`, { method: 'POST' })
+                        .then(() => {
+                            // Fetch fantasy points for each player
+                            return fetch(`/get_fantasy_points/${entry.player_id}`);
+                        })
                         .then(response => response.json())
                         .then(playerData => {
                             if (playerData.status === 'success') {
@@ -50,7 +54,6 @@ function viewPortfolio() {
                             }
                         })
                         .catch(error => {
-                            console.error(`Error fetching data for player ID ${entry.player_id}:`, error);
                             row.cells[4].textContent = 'Error'; // Indicate error
                         });
                 });
@@ -61,8 +64,7 @@ function viewPortfolio() {
                 portfolioContainer.textContent = 'Your portfolio is empty.';
             }
         })
-        .catch(error => {
-            console.error('Error fetching portfolio:', error);
+        .catch(() => {
             document.getElementById('portfolioResults').textContent = 'Failed to load portfolio.';
         });
 }

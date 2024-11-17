@@ -25,12 +25,15 @@ def load_user(user_id):
 
 
 scheduler = BackgroundScheduler()
-players_df = pd.read_csv('static/players.csv')
-player_ids = players_df['id']
+
 
 def scheduled_stock_update():
-    for player_id in player_ids:
-        update_player_stock(player_id)
+    with app.app_context():
+        player_ids = [player.player_id for player in PlayerStock.query.all()]
+        for player_id in player_ids:
+            update_player_stock(player_id)
+
+
 
 scheduler.add_job(scheduled_stock_update, 'interval', hours=1)
 scheduler.start()
@@ -207,6 +210,14 @@ def get_fantasy_points_route(player_id):
         return jsonify({'status': 'error', 'message': 'No game data available for this player.'}), 404
 
 
+@app.route('/update-player-stock/<int:player_id>', methods=['POST'])
+def update_player_stock_route(player_id):
+    try:
+        # Update the player's stock value
+        update_player_stock(player_id)
+        return '', 204  # No Content response for successful update
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)}), 500
 
 @app.route('/add-portfolio-entry', methods=['POST'])
 @login_required
@@ -254,4 +265,5 @@ def add_portfolio_entry():
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
+        #scheduled_stock_update()
     app.run(debug=True)
